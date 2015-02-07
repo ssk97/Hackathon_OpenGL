@@ -1,6 +1,5 @@
 #include <math.h>
 #include "Follower.h"
-#include "badDesign.h"
 
 Follower::Follower(){}
 
@@ -37,5 +36,5 @@ void Follower::draw(GLuint shaderProgram)
 	glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(trans));
 
 
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_TRIANGLE_FAN, 0, 6);
 }

@@ -1,3 +1,4 @@
+#pragma once
 #include "GenericObject.h"
 
 class Follower : public GenericObject

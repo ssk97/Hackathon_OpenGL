@@ -3,6 +3,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <math.h>
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>

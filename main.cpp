@@ -53,6 +53,10 @@ int main()
 	holderArray[PLAYER] = new PlayerHolder();
 	holderArray[FOLLOWER] = new FollowerHolder();
 
+	for (int i = 0; i < numTypes; i++){
+		holderArray[i]->setupDrawing();
+	}
+
 	while (!glfwWindowShouldClose(window))
 	{
 		chrono::steady_clock::time_point t1 = chrono::steady_clock::now();
@@ -65,6 +69,7 @@ int main()
 		for (int i = 0; i < numTypes; i++){
 			holderArray[i]->updateAll();
 		}
+
         // Clear the screen to black
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
