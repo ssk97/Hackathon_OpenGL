@@ -26,6 +26,8 @@ LineTripper::LineTripper()
 
     goalX = rand() % width;
     goalY = rand() % height;
+    targetX = rand() % width;
+    targetY = rand() % height;
 }
 
 LineTripper::LineTripper(double xin, double yin)

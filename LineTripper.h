@@ -12,4 +12,7 @@ public:
 private:
     double goalX;
     double goalY;
+    bool atGoal;
+    double targetX;
+    double targetY;
 };
