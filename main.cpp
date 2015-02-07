@@ -100,6 +100,6 @@ int main()
 
 
 	glfwTerminate();
-	char x;
-	cin >> x;
+	string whocares;
+	getline(cin, whocares);
 }
