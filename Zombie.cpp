@@ -23,7 +23,6 @@ Zombie::Zombie()
         x = width;
         break;
     }
-	updateOldPos();
 }
 
 Zombie::Zombie(double xin, double yin)
