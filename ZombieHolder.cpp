@@ -11,12 +11,9 @@ ZombieHolder::~ZombieHolder()
 {
 }
 
-void ZombieHolder::potentiallyAddZombie()
+void ZombieHolder::AddZombie()
 {
-    if (rand() % 50 == 0)
-    {
-        addObj(new Zombie());
-    }
+	addObj(new Zombie());
 }
 GLuint ZombieHolder::setupFragmentShader(){
 	const GLchar* fragmentSource =
