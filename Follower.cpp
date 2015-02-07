@@ -1,3 +1,4 @@
+#include <math.h>
 #include "Follower.h"
 #include "badDesign.h"
 
@@ -6,13 +7,21 @@ Follower::Follower(){}
 Follower::~Follower(){}
 
 const double SPRING_CONSTANT = 0.001;
+const double FRICTION = .99;
+const double SPRING_LENGTH = 20;
 void Follower::update()
 {
     double mouseX, mouseY;
     glfwGetCursorPos(window, &mouseX, &mouseY);
-    xAcc = SPRING_CONSTANT * (mouseX - x);
-    yAcc = SPRING_CONSTANT * (mouseY - y);
 
+    double delta_y = mouseY - y;
+    double delta_x = mouseX - x;
+
+    double angleToTarget = tan(delta_y/delta_x);
+
+
+    xVel *= FRICTION;
+    yVel *= FRICTION;
     xVel += xAcc;
     yVel += yAcc;
 
