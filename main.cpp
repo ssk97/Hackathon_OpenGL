@@ -3,6 +3,7 @@
 #include "FollowerHolder.h"
 #include "ZombieHolder.h"
 #include "MothershipHolder.h"
+#include "LineTripperHolder.h"
 #include "Spawner.h"
 
 using namespace std;
@@ -62,6 +63,7 @@ int main()
 	holderArray[FOLLOWER] = new FollowerHolder();
 	holderArray[ZOMBIE] = new ZombieHolder();
 	holderArray[MOTHERSHIP] = new MothershipHolder();
+	holderArray[LINETRIPPER] = new LineTripperHolder();
 
 	for (int i = 0; i < numTypes; i++){
 		holderArray[i]->setupDrawing();
