@@ -19,11 +19,17 @@ void GenericObject::updateOldPos() {
 double GenericObject::distMoved(){
 	return (abs(x - oldx) + abs(y - oldy)) / 4;
 }
-void GenericObject::transform(GLuint shaderProgram, double t)//t = motion blur: 0 = old frame, 1 = this frame
+glm::mat4 GenericObject::transformOld()//t = motion blur: 0 = old frame, 1 = this frame
 {
 	glm::mat4 trans;
-	trans = glm::translate(trans, glm::vec3((float)(oldx + (x - oldx)*t), (float)(oldy + (y - oldy)*t), 0.0));
+	trans = glm::translate(trans, glm::vec3((float)(oldx), (float)(oldy), 0.0));
 	trans = glm::rotate(trans, (float)angle, glm::vec3(0.0, 0.0, 1.0));
-	GLint uniTrans = glGetUniformLocation(shaderProgram, "trans");
-	glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(trans));
+	return trans;
+}
+glm::mat4 GenericObject::transform()//t = motion blur: 0 = old frame, 1 = this frame
+{
+	glm::mat4 trans;
+	trans = glm::translate(trans, glm::vec3((float)x, (float)y, 0.0));
+	trans = glm::rotate(trans, (float)angle, glm::vec3(0.0, 0.0, 1.0));
+	return trans;
 }

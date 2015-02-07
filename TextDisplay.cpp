@@ -64,6 +64,7 @@ void TextDisplay::drawText(double x, double y, const char* text)
 			{ x + w, y+h, .1, .1 },
 	};
 
+	glUseProgram(shaderProgram);
 	glBufferData(GL_ARRAY_BUFFER, sizeof box, box, GL_DYNAMIC_DRAW);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
