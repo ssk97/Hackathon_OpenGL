@@ -1,6 +1,6 @@
 #pragma once
 #include <malloc.h>
-#include "SOIL.h"
+#include <SOIL.h>
 #include "badDesign.h"
 class TextDisplay
 {

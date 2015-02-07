@@ -2,7 +2,8 @@
 
 TextDisplay::TextDisplay()
 {
-	unsigned char* img = SOIL_load_image("Numbers_mono.png", &img_width, &img_height, NULL, 0);
+    int channels;
+	unsigned char* img = SOIL_load_image("Numbers_mono.png", &img_width, &img_height, &channels, 0);
 	GLuint texture_id;
 	glGenTextures(1, &texture_id);
 	glBindTexture(GL_TEXTURE_2D, texture_id);
