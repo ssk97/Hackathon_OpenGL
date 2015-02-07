@@ -97,7 +97,7 @@ void GenericHolder::drawAll()
 	glUseProgram(shaderProgram);
 	glBindVertexArray(vao);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	for (std::vector<GenericObject*>::iterator it = objs.begin(); it != objs.end(); ++it){
+	for (std::vector<GenericObject*>::iterator it = objs.begin(); it != objs.end(); ){
 		if ((*it)->markedForDeath){
 			it = objs.erase(it);
 		}
@@ -109,6 +109,7 @@ void GenericHolder::drawAll()
 				draw(*it);
 			}
 			(*it)->updateOldPos();
+			++it;
 		}
 	}
 }
