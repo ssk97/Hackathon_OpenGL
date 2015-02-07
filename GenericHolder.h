@@ -3,6 +3,9 @@
 #include "GenericObject.h"
 class GenericHolder
 {
+protected:
+    void setupGlForRedTriangle();
+    GLuint vertexShader, fragmentShader, posAttrib, uniTrans, vbo, vao;
 public:
 	GenericHolder();
 	~GenericHolder();

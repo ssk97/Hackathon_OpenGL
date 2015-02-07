@@ -13,7 +13,7 @@
 
 class GenericHolder;
 
-const int numTypes = 10;
+const int numTypes = 1;
 extern GenericHolder* holderArray[numTypes];
 const int PLAYER = 0, FOLLOWER = 1;
 

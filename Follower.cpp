@@ -1,9 +1,10 @@
 #include "Follower.h"
-#include "openGL_stuff.h"
+#include "badDesign.h"
 
 const double SPRING_CONSTANT = .001;
 void Follower::update()
 {
+    double mouseX, mouseY;
     glfwGetCursorPos(window, &mouseX, &mouseY);
     xAcc = mouseX - x;
     yAcc = mouseY - y;
