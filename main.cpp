@@ -1,7 +1,9 @@
 
 #include <stdio.h>
 #include <iostream>
-#include <ctime>
+#include <chrono>
+#include <thread>
+
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -114,10 +116,12 @@ int main()
 	GLint uniTrans = glGetUniformLocation(shaderProgram, "view");
 	glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(view));
 
+	auto maxtime = chrono::milliseconds(1000 / 120);
+
 	while (!glfwWindowShouldClose(window))
 	{
-		clock_t startTime = clock();
-
+		
+		chrono::high_resolution_clock::time_point t1 = chrono::high_resolution_clock::now();
 		
 		checkErrors();
 		glfwPollEvents();
@@ -136,13 +140,11 @@ int main()
 
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 
+
 		glfwSwapBuffers(window);
 
-
-		clock_t endTime = clock();
-		clock_t clockTicksTaken = endTime - startTime;
-		double timeInSeconds = clockTicksTaken / (double)CLOCKS_PER_SEC;
-		cout << timeInSeconds*60. << endl;
+		auto time_span = chrono::high_resolution_clock::now()-t1;
+		this_thread::sleep_for(maxtime - time_span);
 	}
 
 	
