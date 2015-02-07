@@ -5,9 +5,9 @@ Follower::Follower(){}
 
 Follower::~Follower(){}
 
-const double SPRING_CONSTANT_SLOW = 0.005;
-const double FRICTION = .985;
-const double SPRING_LENGTH = 25;
+const double SPRING_CONSTANT_SLOW = 0.01;
+const double FRICTION = .99;
+const double SPRING_LENGTH = 100;
 void Follower::update()
 {
     double mouseX, mouseY;
@@ -17,11 +17,11 @@ void Follower::update()
     double delta_y = mouseY - y;
     double delta_x = mouseX - x;
 
-    double springConstant = buttonDown ? SPRING_CONSTANT_SLOW * 2 : SPRING_CONSTANT_SLOW;
+    double springConstant = buttonDown ? SPRING_CONSTANT_SLOW * 5 : SPRING_CONSTANT_SLOW;
 
     double angleToTarget = atan2(delta_y, delta_x);
-    double equilibrium_y = SPRING_LENGTH * sin(angleToTarget) + mouseY;
-    double equilibrium_x = SPRING_LENGTH * cos(angleToTarget) + mouseX;
+    double equilibrium_y = SPRING_LENGTH * -sin(angleToTarget) + mouseY;
+    double equilibrium_x = SPRING_LENGTH * -cos(angleToTarget) + mouseX;
 
     yAcc = springConstant * (equilibrium_y - y);
     xAcc = springConstant * (equilibrium_x - x);
