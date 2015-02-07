@@ -14,5 +14,6 @@ public:
 	virtual void update() = 0;
 	void updateOldPos();
 	double distMoved();
-	void transform(GLuint shaderProgram, double t);
+	glm::mat4 transformOld();
+	glm::mat4 transform();
 };

@@ -93,6 +93,7 @@ void GenericHolder::updateAll()
 	for (std::vector<GenericObject*>::iterator it = objs.begin(); it != objs.end(); ++it)
 		(*it) -> update();
 }
+#include <glm/gtx/matrix_interpolation.hpp>
 void GenericHolder::drawAll()
 {
 	glUseProgram(shaderProgram);
@@ -107,8 +108,11 @@ void GenericHolder::drawAll()
 		else
 		{
 			double reps = (itObj->distMoved()) + 1;
+			auto newTrans = (itObj)->transform();
+			auto oldTrans = (itObj)->transformOld();
 			for (int i = 0; i <= reps; i++){
-				(itObj)->transform(shaderProgram, i / reps);
+				GLint uniTrans = glGetUniformLocation(shaderProgram, "trans");
+				glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(glm::interpolate(oldTrans, newTrans, i / (float)reps)));
 				draw(itObj);
 			}
 			(itObj)->updateOldPos();
