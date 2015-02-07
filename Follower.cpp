@@ -16,8 +16,12 @@ void Follower::update()
     double delta_y = mouseY - y;
     double delta_x = mouseX - x;
 
-    double angleToTarget = tan(delta_y/delta_x);
+    double angleToTarget = atan2(delta_y, delta_x);
+    double equilibrium_y = SPRING_LENGTH * sin(angleToTarget);
+    double equilibrium_x = SPRING_LENGTH * cos(angleToTarget);
 
+    yAcc = SPRING_CONSTANT * (equilibrium_y - y);
+    xAcc = SPRING_CONSTANT * (equilibrium_x - x);
 
     xVel *= FRICTION;
     yVel *= FRICTION;
