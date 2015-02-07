@@ -1,7 +1,7 @@
 #include "badDesign.h"
 #include "PlayerHolder.h"
 #include "FollowerHolder.h"
-#include "ZombieHolder.h"
+#include "Spawner.h"
 
 using namespace std;
  glm::mat4 view;
@@ -48,6 +48,8 @@ int main()
 	//GLFWwindow* window = glfwCreateWindow(width, height, "OpenGL", nullptr, nullptr); // Windowed
 	gameOver = false;
 	score = 0;
+	Spawner* spawnController = new Spawner();
+
 	window = setupDrawing();
 
 	view = glm::translate(view, glm::vec3(-1, 1, 0));
@@ -71,10 +73,11 @@ int main()
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 			glfwSetWindowShouldClose(window, GL_TRUE);
 
+		spawnController->tick();
+
 		for (int i = 0; i < numTypes; i++){
 			holderArray[i]->updateAll();
 		}
-		((ZombieHolder*)(holderArray[ZOMBIE]))->potentiallyAddZombie();
 
         // Clear the screen to black
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -93,7 +96,7 @@ int main()
 	}
 
 
+	glfwTerminate();
 	char x;
 	cin >> x;
-	glfwTerminate();
 }
