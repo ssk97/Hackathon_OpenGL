@@ -12,8 +12,7 @@ Spawner::~Spawner()
 
 void Spawner::tick()
 {
-	time++;
-	if (time % 240 == 0){
+	if (time++ % 240 == 0){
 		wave++;
 		for (int i = 0; i < wave; i++){
 			((ZombieHolder*)(holderArray[ZOMBIE]))->AddZombie();
