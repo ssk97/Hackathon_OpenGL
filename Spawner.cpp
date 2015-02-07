@@ -18,6 +18,10 @@ void Spawner::tick()
 		for (int i = 0; i < wave; i++){
 			((ZombieHolder*)(holderArray[ZOMBIE]))->AddZombie();
 		}
+		for (int i = 0; i < wave / 5; i++)
+		{
+            ((MothershipHolder*)(holderArray[MOTHERSHIP]))->addMothership();
+		}
 	}
 }
 

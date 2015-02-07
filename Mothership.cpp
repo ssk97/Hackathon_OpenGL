@@ -46,6 +46,8 @@ void Mothership::update()
         holderArray[ZOMBIE]->addObj(new Zombie(x,y - 20));
     }
 
+
+
 	possibleCollideWithFollower();
 	possibleCollideWithPlayer();
 }

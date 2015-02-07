@@ -1,3 +1,4 @@
+#pragma once
 #include "GenericHolder.h"
 
 class ZombieHolder : public GenericHolder

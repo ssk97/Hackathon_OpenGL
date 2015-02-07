@@ -1,6 +1,7 @@
 #pragma once
 #include "GenericObject.h"
 #include "ZombieHolder.h"
+#include "MothershipHolder.h"
 
 class Spawner
 {

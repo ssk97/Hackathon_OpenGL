@@ -11,12 +11,9 @@ MothershipHolder::~MothershipHolder()
 {
 }
 
-void MothershipHolder::potentiallyAddMothership()
+void MothershipHolder::addMothership()
 {
-    if (rand() % 600 == 0)
-    {
-        addObj(new Mothership());
-    }
+    addObj(new Mothership());
 }
 GLuint MothershipHolder::setupFragmentShader(){
 	const GLchar* fragmentSource =
