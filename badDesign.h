@@ -22,6 +22,8 @@ class Player;
 class Follower;
 extern Player* ThePlayer;
 extern Follower* TheFollower;
+extern bool gameOver;
+extern unsigned long score;
 
 const int numTypes = 3;
 extern GenericHolder* holderArray[numTypes];

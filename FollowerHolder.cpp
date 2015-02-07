@@ -19,8 +19,8 @@ GLuint FollowerHolder::setupGeometry(){
 	vertices[0] = 0.0f; vertices[1] = 0.0f;
 	int vertexNum = 2;
 	for (int i = 0; i < count-1; i += 1){
-		vertices[vertexNum++] = Dcos(i * 360 / (count-2))*((i % 2) * 25 + 20);
-		vertices[vertexNum++] = Dsin(i * 360 / (count-2))*((i % 2) * 25 + 20);
+		vertices[vertexNum++] = Dcos(i * 360 / (count-2))*((i % 2) * 12 + 10);
+		vertices[vertexNum++] = Dsin(i * 360 / (count-2))*((i % 2) * 12 + 10);
 	}
 	assert(vertexNum == count * 2);
 	glGenBuffers(1, &vbo); // Generate 1 buffer

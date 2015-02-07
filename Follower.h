@@ -1,5 +1,6 @@
 #pragma once
 #include "GenericObject.h"
+#include "Player.h"
 
 class Follower : public GenericObject
 {

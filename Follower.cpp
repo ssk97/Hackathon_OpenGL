@@ -10,18 +10,17 @@ const double FRICTION = .985;
 const double SPRING_LENGTH = 25;
 void Follower::update()
 {
-    double mouseX, mouseY;
-    glfwGetCursorPos(window, &mouseX, &mouseY);
+	GenericObject* player = ThePlayer;
     int buttonDown = glfwGetMouseButton(window, 0);
 
-    double delta_y = mouseY - y;
-    double delta_x = mouseX - x;
+	double delta_y = (player->y) - y;
+	double delta_x = (player->x) - x;
 
     double springConstant = buttonDown ? SPRING_CONSTANT_SLOW * 2 : SPRING_CONSTANT_SLOW;
 
     double angleToTarget = atan2(delta_y, delta_x);
-    double equilibrium_y = SPRING_LENGTH * sin(angleToTarget) + mouseY;
-    double equilibrium_x = SPRING_LENGTH * cos(angleToTarget) + mouseX;
+	double equilibrium_y = SPRING_LENGTH * sin(angleToTarget) + (player->y);
+	double equilibrium_x = SPRING_LENGTH * cos(angleToTarget) + (player->x);
 
     yAcc = springConstant * (equilibrium_y - y);
     xAcc = springConstant * (equilibrium_x - x);

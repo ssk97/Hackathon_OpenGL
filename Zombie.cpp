@@ -36,11 +36,10 @@ Zombie::~Zombie()
 
 void Zombie::update()
 {
-    double mouseX, mouseY;
-    glfwGetCursorPos(window, &mouseX, &mouseY);
+	GenericObject* player = ThePlayer;
 
-    double delta_y = mouseY - y;
-    double delta_x = mouseX - x;
+	double delta_y = (player->y) - y;
+	double delta_x = (player->x) - x;
     angle = atan2(delta_y, delta_x);
 
     x += 4 * cos(angle);
@@ -48,6 +47,7 @@ void Zombie::update()
 	angle = angle * 180 / PI;//convert to degrees
 
 	possibleCollideWithFollower();
+	possibleCollideWithPlayer();
 }
 
 void Zombie::collideWithPlayer()

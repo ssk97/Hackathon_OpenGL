@@ -38,13 +38,13 @@ GLuint PlayerHolder::setupGeometry(){
 		if (i % 2 == 0){
 			vertices[vertexNum++] = 0.0f; vertices[vertexNum++] = 0.0f;
 		}
-		vertices[vertexNum++] = Dcos(i * 360 / (6))*60;
-		vertices[vertexNum++] = Dsin(i * 360 / (6))*60;
+		vertices[vertexNum++] = Dcos(i * 360 / (6))*30;
+		vertices[vertexNum++] = Dsin(i * 360 / (6))*30;
 	}
 	//circle
 	for (int i = 0; i < count2; i++){
-		vertices[vertexNum++] = Dcos(i * 360 / (count2)) * 40;
-		vertices[vertexNum++] = Dsin(i * 360 / (count2)) * 40;
+		vertices[vertexNum++] = Dcos(i * 360 / (count2)) * 20;
+		vertices[vertexNum++] = Dsin(i * 360 / (count2)) * 20;
 	}
 	glGenBuffers(1, &vbo); // Generate 1 buffer
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);

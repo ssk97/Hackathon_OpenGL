@@ -7,6 +7,8 @@ using namespace std;
  glm::mat4 view;
  GLFWwindow* window;
  GenericHolder* holderArray[numTypes];
+ bool gameOver;
+ unsigned long score;
 
  void checkShader(GLuint shader)
 {
@@ -44,7 +46,8 @@ GLFWwindow* setupDrawing(){
 int main()
 {
 	//GLFWwindow* window = glfwCreateWindow(width, height, "OpenGL", nullptr, nullptr); // Windowed
-
+	gameOver = false;
+	score = 0;
 	window = setupDrawing();
 
 	view = glm::translate(view, glm::vec3(-1, 1, 0));
@@ -61,6 +64,7 @@ int main()
 
 	while (!glfwWindowShouldClose(window))
 	{
+		//gameOver = false;
 		chrono::steady_clock::time_point t1 = chrono::steady_clock::now();
 
 		checkErrors();
@@ -83,7 +87,10 @@ int main()
 
 		auto time_span = chrono::steady_clock::now() - t1;
 		this_thread::sleep_for(maxtime - time_span);
-		cout << (maxtime - time_span).count() << endl;
+		cout <<score <<"    |"<< (maxtime - time_span).count() << endl;
+		if (!gameOver){
+			score++;
+		}
 	}
 
 
