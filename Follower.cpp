@@ -6,7 +6,7 @@ Follower::Follower(){}
 Follower::~Follower(){}
 
 const double SPRING_CONSTANT_SLOW = 0.005;
-const double FRICTION = .99;
+const double FRICTION = .985;
 const double SPRING_LENGTH = 25;
 void Follower::update()
 {
