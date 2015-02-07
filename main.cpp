@@ -63,6 +63,9 @@ int main()
 		for (int i = 0; i < numTypes; i++){
 			holderArray[i]->updateAll();
 		}
+		// Clear the screen to black
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
 		for (int i = 0; i < numTypes; i++){
 			holderArray[i]->drawAll();
 		}
