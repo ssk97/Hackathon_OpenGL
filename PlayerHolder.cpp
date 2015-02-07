@@ -18,7 +18,7 @@ GLuint PlayerHolder::setupFragmentShader(){
 
 PlayerHolder::PlayerHolder()
 {
-	objs.push_back(new Player());
+	addObj(new Player());
 }
 
 

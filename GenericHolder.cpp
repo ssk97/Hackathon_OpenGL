@@ -17,6 +17,11 @@ GenericHolder::~GenericHolder()
 	glDeleteVertexArrays(1, &vao);
 }
 
+void GenericHolder::addObj(GenericObject *obj){
+	objs.push_back(obj);
+	(*obj).parent = this;
+}
+
 GLuint GenericHolder::setupDrawing(){
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);//this is bound to the geometry setup in the next call
