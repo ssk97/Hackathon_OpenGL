@@ -25,7 +25,7 @@ Mothership::Mothership()
         x = width;
         break;
     }
-    angle = fmod(rand(), 2 * PI);
+	angle = ((double)rand() / RAND_MAX) * 360;
 
 	updateOldPos();
 }
@@ -49,27 +49,26 @@ void Mothership::update()
         holderArray[ZOMBIE]->addObj(new Zombie(x,y - 20));
     }
 
-    double plusOrMinusPi = fmod(rand(), 2 * PI) - PI;
+	double randomAngle = ((double)rand() / RAND_MAX)*180-90;
     if (x > width)
     {
-        angle = PI + plusOrMinusPi;
+		angle = 180 + randomAngle;
     }
     else if (x < 0)
     {
-        angle = 0 + plusOrMinusPi;
+		angle = 0 + randomAngle;
     }
     else if (y > height)
     {
-        angle = PI / 2 + plusOrMinusPi;
+		angle = 270 + randomAngle;
     }
     else if (y < 0)
     {
-        y = 0;
-        angle = fmod(rand(), 2 * PI);
+		angle = 90 + randomAngle;
     }
 
-    y += MOTHERSHIP_SPEED * sin(angle);
-    x += MOTHERSHIP_SPEED * cos(angle);
+    y += MOTHERSHIP_SPEED * Dsin(angle);
+    x += MOTHERSHIP_SPEED * Dcos(angle);
 
 	possibleCollideWithFollower();
 	possibleCollideWithPlayer();

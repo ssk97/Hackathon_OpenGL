@@ -14,14 +14,17 @@ void Spawner::tick()
 {
 	if (time++ % 240 == 0){
 		wave++;
-		#ifndef NO_ZOMBIES
-		for (int i = 0; i < wave; i++){
-			((ZombieHolder*)(holderArray[ZOMBIE]))->AddZombie();
+		int remainingCount = wave;
+		if (wave >= 3){
+			int motherShipCount = (rand() % (wave / 2));
+			for (int i = 0; i < motherShipCount; i++)
+			{
+				((MothershipHolder*)(holderArray[MOTHERSHIP]))->addMothership();
+			}
+			remainingCount -= motherShipCount * 2;
 		}
-		#endif // NO_ZOMBIES
-		for (int i = 0; i < wave / 5 ; i++)
-		{
-            ((MothershipHolder*)(holderArray[MOTHERSHIP]))->addMothership();
+		for (int i = 0; i < remainingCount; i++){
+			((ZombieHolder*)(holderArray[ZOMBIE]))->AddZombie();
 		}
 	}
 }
