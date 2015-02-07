@@ -25,6 +25,8 @@ Enemy::Enemy()
 	angle = ((double)rand() / RAND_MAX) * 360;
 }
 
+
+
 static bool checkCollisionLineCircle(double x0, double y0, double x1, double y1, double x2, double y2, double r)
 {//Check collision from line segment (x0,y0),(x1,y1) to circle (x2,y2) with radius r
 	//source: http://www.openprocessing.org/sketch/65771

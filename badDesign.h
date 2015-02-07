@@ -25,9 +25,9 @@ extern Follower* TheFollower;
 extern bool gameOver;
 extern unsigned long score;
 
-const int numTypes = 4;
+const int numTypes = 5;
 extern GenericHolder* holderArray[numTypes];
-const int PLAYER = 0, FOLLOWER = 1, ZOMBIE = 2, MOTHERSHIP = 3;
+const int PLAYER = 0, FOLLOWER = 1, ZOMBIE = 2, MOTHERSHIP = 3, LINETRIPPER = 4;
 
 const int width = 1024;
 const int height = 768;

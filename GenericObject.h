@@ -16,4 +16,3 @@ public:
 	double distMoved();
 	void transform(GLuint shaderProgram, double t);
 };
-
