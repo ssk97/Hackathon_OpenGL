@@ -36,15 +36,11 @@ void Follower::update()
 
     x += xVel;
     y += yVel;
+
+	angle += 1;
 }
 
-void Follower::draw(GLuint shaderProgram)
+void Follower::draw()
 {
-    glm::mat4 trans;
-	trans = glm::translate(trans, glm::vec3((float)x,(float)y, 0.0));
-	GLint uniTrans = glGetUniformLocation(shaderProgram, "trans");
-	glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(trans));
-
-
 	glDrawArrays(GL_TRIANGLE_FAN, 0, 182);
 }

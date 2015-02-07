@@ -6,6 +6,6 @@ public:
 	Player();
 	~Player();
 	void update();
-	void draw(GLuint shaderProgram);
+	void draw();
 };
 

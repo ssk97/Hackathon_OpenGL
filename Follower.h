@@ -7,7 +7,7 @@ public:
     Follower();
     ~Follower();
     void update();
-    void draw(GLuint shaderProgram);
+    void draw();
 private:
     double xVel = 0;
     double yVel = 0;
