@@ -40,5 +40,5 @@ void Follower::draw(GLuint shaderProgram)
 	glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(trans));
 
 
-	glDrawArrays(GL_TRIANGLE_FAN, 0, 6);
+	glDrawArrays(GL_TRIANGLE_FAN, 0, 182);
 }
