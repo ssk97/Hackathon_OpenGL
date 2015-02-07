@@ -1,5 +1,6 @@
 #include "badDesign.h"
 #include "PlayerHolder.h"
+#include "FollowerHolder.h"
 
 using namespace std;
  glm::mat4 view;
@@ -50,11 +51,12 @@ int main()
 
 	auto maxtime = chrono::milliseconds(1000 / 120);
 	holderArray[PLAYER] = new PlayerHolder();
+	holderArray[FOLLOWER] = new FollowerHolder();
 
 	while (!glfwWindowShouldClose(window))
 	{
 		chrono::steady_clock::time_point t1 = chrono::steady_clock::now();
-		
+
 		checkErrors();
 		glfwPollEvents();
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -63,6 +65,9 @@ int main()
 		for (int i = 0; i < numTypes; i++){
 			holderArray[i]->updateAll();
 		}
+        // Clear the screen to black
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
 		for (int i = 0; i < numTypes; i++){
 			holderArray[i]->drawAll();
 		}
@@ -70,9 +75,10 @@ int main()
 
 		auto time_span = chrono::steady_clock::now() - t1;
 		this_thread::sleep_for(maxtime - time_span);
+
 	}
 
-	
-	
+
+
 	glfwTerminate();
 }

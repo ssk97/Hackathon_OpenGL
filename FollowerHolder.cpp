@@ -1,13 +1,13 @@
-#include "PlayerHolder.h"
+#include "FollowerHolder.h"
 
-PlayerHolder::PlayerHolder()
+FollowerHolder::FollowerHolder()
 {
-	objs.push_back(new Player());
+	objs.push_back(new Follower());
 
     setupGlForRedTriangle();
 }
 
-PlayerHolder::~PlayerHolder()
+FollowerHolder::~FollowerHolder()
 {
 	glDeleteProgram(shaderProgram);
 	glDeleteShader(fragmentShader);
