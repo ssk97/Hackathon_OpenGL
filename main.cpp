@@ -62,9 +62,8 @@ int main()
 		holderArray[i]->setupDrawing();
 	}
 
-	while (!glfwWindowShouldClose(window))
+	while (!glfwWindowShouldClose(window) && !gameOver)
 	{
-		//gameOver = false;
 		chrono::steady_clock::time_point t1 = chrono::steady_clock::now();
 
 		checkErrors();
@@ -94,6 +93,7 @@ int main()
 	}
 
 
-
+	char x;
+	cin >> x;
 	glfwTerminate();
 }
