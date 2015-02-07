@@ -8,9 +8,9 @@ public:
 	~GenericHolder();
 	void updateAll();
 	void drawAll();
-	virtual void loadDraw() = 0;
-	virtual void unloadDraw() = 0;
-private:
+	//virtual void loadDraw() = 0;
+	//virtual void unloadDraw() = 0;
 	std::vector<GenericObject> objs;
+	GLuint shaderProgram;
 };
 
