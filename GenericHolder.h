@@ -8,6 +8,7 @@ public:
 	~GenericHolder();
 	void updateAll();
 	void drawAll();
+	void addObj(GenericObject *obj);
 	virtual GLuint setupDrawing();
 	virtual GLuint setupVertexShader();
 	virtual GLuint setupFragmentShader();
