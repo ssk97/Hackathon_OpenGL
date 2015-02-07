@@ -3,7 +3,6 @@
 
 GenericHolder::GenericHolder() : objs(0)
 {
-	shaderProgram = setupDrawing();
 }
 
 
@@ -19,12 +18,29 @@ GenericHolder::~GenericHolder()
 }
 
 GLuint GenericHolder::setupDrawing(){
-	GLuint posAttrib, uniTrans,shaderProgramCompiler;
-
-
-	GLuint vbo, vao;
 	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
+	glBindVertexArray(vao);//this is bound to the geometry setup in the next call
+	vbo = setupGeometry();
+
+	shaderProgram = glCreateProgram();
+	vertexShader = setupVertexShader();
+	glAttachShader(shaderProgram, vertexShader);
+	fragmentShader = setupFragmentShader();
+	glAttachShader(shaderProgram, setupFragmentShader());
+	glLinkProgram(shaderProgram);
+	glUseProgram(shaderProgram);
+
+	posAttrib = glGetAttribLocation(shaderProgram, "position");
+	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(posAttrib);
+
+
+	uniTrans = glGetUniformLocation(shaderProgram, "view");
+	glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(view));
+	return shaderProgram;
+}
+GLuint GenericHolder::setupGeometry(){
+	GLuint vbo;
 	float vertices[] = {
 		0.0f, 0.0f, // Vertex 1 (X, Y)
 		100.0f, 0.0f, // Vertex 2 (X, Y)
@@ -33,21 +49,7 @@ GLuint GenericHolder::setupDrawing(){
 	glGenBuffers(1, &vbo); // Generate 1 buffer
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	
-	shaderProgramCompiler = glCreateProgram();
-	glAttachShader(shaderProgramCompiler, setupVertexShader());
-	glAttachShader(shaderProgramCompiler, setupFragmentShader());
-	glLinkProgram(shaderProgramCompiler);
-	glUseProgram(shaderProgramCompiler);
-
-	posAttrib = glGetAttribLocation(shaderProgramCompiler, "position");
-	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
-	glEnableVertexAttribArray(posAttrib);
-
-
-	uniTrans = glGetUniformLocation(shaderProgramCompiler, "view");
-	glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(view));
-	return shaderProgramCompiler;
+	return vbo;
 }
 GLuint GenericHolder::setupVertexShader(){
 	const GLchar* vertexSource =
@@ -87,6 +89,8 @@ void GenericHolder::updateAll()
 }
 void GenericHolder::drawAll()
 {
+	glUseProgram(shaderProgram);
+	glBindVertexArray(vao);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	for (std::vector<GenericObject*>::iterator it = objs.begin(); it != objs.end(); ++it)
 		(*it)->draw(shaderProgram);

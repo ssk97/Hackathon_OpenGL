@@ -6,5 +6,6 @@ class PlayerHolder: public GenericHolder
 public:
 	PlayerHolder();
 	~PlayerHolder();
+	GLuint setupFragmentShader();
 };
 

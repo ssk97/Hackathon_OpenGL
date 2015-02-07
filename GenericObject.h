@@ -6,7 +6,7 @@ class GenericObject
 public:
 	GenericObject();
 	~GenericObject();
-	double x, y;
+	double x=50, y=50;
 	//GenericHolder &Parent;
 	virtual void update() = 0;
 	virtual void draw(GLuint shaderProgram) = 0;
