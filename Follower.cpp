@@ -17,8 +17,8 @@ void Follower::update()
     double delta_x = mouseX - x;
 
     double angleToTarget = atan2(delta_y, delta_x);
-    double equilibrium_y = SPRING_LENGTH * sin(angleToTarget);
-    double equilibrium_x = SPRING_LENGTH * cos(angleToTarget);
+    double equilibrium_y = SPRING_LENGTH * sin(angleToTarget) + mouseY;
+    double equilibrium_x = SPRING_LENGTH * cos(angleToTarget) + mouseX;
 
     yAcc = SPRING_CONSTANT * (equilibrium_y - y);
     xAcc = SPRING_CONSTANT * (equilibrium_x - x);
