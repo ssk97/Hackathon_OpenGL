@@ -12,6 +12,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+const int width = 1024;
+const int height = 768;
+
 using namespace std;
 
 // Shader sources
@@ -31,7 +34,6 @@ const GLchar* fragmentSource =
 "}";
 
 double mouseX, mouseY;
-int width, height;
 void checkShader(GLuint shader)
 {
 	GLint status;
@@ -50,9 +52,7 @@ void checkErrors()
 		;
 	}
 }
-int main()
-{
-	
+GLFWwindow* setupDrawing(){
 	glfwInit();
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -61,16 +61,17 @@ int main()
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-
-	width = 800;
-	height = 600;
-	//GLFWwindow* window = glfwCreateWindow(width, height, "OpenGL", nullptr, nullptr); // Windowed
 	GLFWwindow* window = glfwCreateWindow(width, height, "OpenGL", NULL, NULL); // Fullscreen
-
 	glfwMakeContextCurrent(window);
-
 	glewExperimental = GL_TRUE;
 	glewInit();
+	return window;
+}
+int main()
+{
+	//GLFWwindow* window = glfwCreateWindow(width, height, "OpenGL", nullptr, nullptr); // Windowed
+
+	GLFWwindow* window = setupDrawing();
 
 	GLuint vao;
 	glGenVertexArrays(1, &vao);
@@ -121,7 +122,7 @@ int main()
 	while (!glfwWindowShouldClose(window))
 	{
 		
-		chrono::high_resolution_clock::time_point t1 = chrono::high_resolution_clock::now();
+		chrono::steady_clock::time_point t1 = chrono::steady_clock::now();
 		
 		checkErrors();
 		glfwPollEvents();
@@ -143,7 +144,7 @@ int main()
 
 		glfwSwapBuffers(window);
 
-		auto time_span = chrono::high_resolution_clock::now()-t1;
+		auto time_span = chrono::steady_clock::now() - t1;
 		this_thread::sleep_for(maxtime - time_span);
 	}
 
