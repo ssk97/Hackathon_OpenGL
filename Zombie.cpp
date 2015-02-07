@@ -4,10 +4,6 @@
 
 Zombie::Zombie()
 {
-    static int next_ID;
-    id = next_ID;
-    next_ID++;
-
     switch (rand() % 4)
     {
     case 0:
@@ -28,6 +24,12 @@ Zombie::Zombie()
         break;
     }
 	updateOldPos();
+}
+
+Zombie::Zombie(double xin, double yin)
+{
+    x = xin;
+    y = yin;
 }
 
 Zombie::~Zombie()

@@ -2,6 +2,7 @@
 #include "PlayerHolder.h"
 #include "FollowerHolder.h"
 #include "ZombieHolder.h"
+#include "MothershipHolder.h"
 
 using namespace std;
  glm::mat4 view;
@@ -57,6 +58,7 @@ int main()
 	holderArray[PLAYER] = new PlayerHolder();
 	holderArray[FOLLOWER] = new FollowerHolder();
 	holderArray[ZOMBIE] = new ZombieHolder();
+	holderArray[MOTHERSHIP] = new MothershipHolder();
 
 	for (int i = 0; i < numTypes; i++){
 		holderArray[i]->setupDrawing();

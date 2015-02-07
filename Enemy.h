@@ -1,3 +1,4 @@
+#pragma once
 #include "GenericObject.h"
 #include "Player.h"
 #include "Follower.h"

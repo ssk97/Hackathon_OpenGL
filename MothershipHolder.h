@@ -1,12 +1,13 @@
 #include "GenericHolder.h"
 
-class ZombieHolder : public GenericHolder
+class MothershipHolder : public GenericHolder
 {
 public:
-    ZombieHolder();
-    ~ZombieHolder();
-	void potentiallyAddZombie();
+    MothershipHolder();
+    ~MothershipHolder();
+	void potentiallyAddMothership();
 	GLuint setupFragmentShader();
 	GLuint setupGeometry();
     void draw(GenericObject *obj);
+
 };

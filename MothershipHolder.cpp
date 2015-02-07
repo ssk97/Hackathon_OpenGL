@@ -1,29 +1,29 @@
 #include <cstdlib>
-#include "ZombieHolder.h"
-#include "Zombie.h"
+#include "MothershipHolder.h"
+#include "Mothership.h"
 
 
-ZombieHolder::ZombieHolder()
+MothershipHolder::MothershipHolder()
 {
 }
 
-ZombieHolder::~ZombieHolder()
+MothershipHolder::~MothershipHolder()
 {
 }
 
-void ZombieHolder::potentiallyAddZombie()
+void MothershipHolder::potentiallyAddMothership()
 {
-    if (rand() % 50 == 0)
+    if (rand() % 600 == 0)
     {
-        addObj(new Zombie());
+        addObj(new Mothership());
     }
 }
-GLuint ZombieHolder::setupFragmentShader(){
+GLuint MothershipHolder::setupFragmentShader(){
 	const GLchar* fragmentSource =
 		"#version 330 core\n"
 		"out vec4 outColor;"
 		"void main() {"
-		"   outColor = vec4(0.0, 1.0, 0.0, 1.0);"//RGBA
+		"   outColor = vec4(1.0, 0.1, 1.0, 1.0);"//RGBA
 		"}";
 	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
@@ -31,7 +31,7 @@ GLuint ZombieHolder::setupFragmentShader(){
 	checkShader(fragmentShader);
 	return fragmentShader;
 }
-GLuint ZombieHolder::setupGeometry(){
+GLuint MothershipHolder::setupGeometry(){
 	GLuint vbo;
 	float vertices[] = {
 		-5.0f, -5.0f,
@@ -50,7 +50,7 @@ GLuint ZombieHolder::setupGeometry(){
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	return vbo;
 }
-void ZombieHolder::draw(GenericObject *obj)
+void MothershipHolder::draw(GenericObject *obj)
 {
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glDrawArrays(GL_LINES, 4, 4);
