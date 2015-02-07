@@ -19,7 +19,8 @@ GenericHolder::~GenericHolder()
 
 void GenericHolder::addObj(GenericObject *obj){
 	objs.push_back(obj);
-	(*obj).parent = this;
+	obj->parent = this;
+	obj->updateOldPos();
 }
 
 GLuint GenericHolder::setupDrawing(){

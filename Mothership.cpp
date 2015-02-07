@@ -25,7 +25,6 @@ Mothership::Mothership()
         x = width;
         break;
     }
-	updateOldPos();
 }
 
 Mothership::~Mothership()
