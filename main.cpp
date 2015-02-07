@@ -5,6 +5,7 @@
 #include "MothershipHolder.h"
 #include "LineTripperHolder.h"
 #include "Spawner.h"
+#include "TextDisplay.h"
 
 using namespace std;
  glm::mat4 view;
@@ -48,15 +49,16 @@ GLFWwindow* setupDrawing(){
 }
 int main()
 {
-	//GLFWwindow* window = glfwCreateWindow(width, height, "OpenGL", nullptr, nullptr); // Windowed
 	gameOver = false;
 	score = 0;
-	Spawner* spawnController = new Spawner();
 
 	window = setupDrawing();
 
 	view = glm::translate(view, glm::vec3(-1, 1, 0));
 	view = glm::scale(view, glm::vec3(2.0 / width, -2.0 / height, 1.0));
+
+	Spawner* spawnController = new Spawner();
+	TextDisplay* text = new TextDisplay();
 
 	auto maxtime = chrono::milliseconds(1000 / 60);
 	holderArray[PLAYER] = new PlayerHolder();
@@ -90,18 +92,36 @@ int main()
 		for (int i = 0; i < numTypes; i++){
 			holderArray[i]->drawAll();
 		}
+		text->drawText(50,50,"0");
 		glfwSwapBuffers(window);
 
-		auto time_span = chrono::steady_clock::now() - t1;
-		cout <<score <<"    |"<< (maxtime - time_span).count() << endl;
+		//cout <<score <<"    |"<< (maxtime - time_span).count() << endl;
 		if (!gameOver){
 			score++;
-		this_thread::sleep_for(maxtime - time_span);
 		}
+		auto time_span = chrono::steady_clock::now() - t1;
+		this_thread::sleep_for(maxtime - time_span);
+	}
+	//game over screen
+	while (!glfwWindowShouldClose(window))
+	{
+		chrono::steady_clock::time_point t1 = chrono::steady_clock::now();
+
+		checkErrors();
+		glfwPollEvents();
+		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+			glfwSetWindowShouldClose(window, GL_TRUE);
+
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+		for (int i = 0; i < numTypes; i++){
+			holderArray[i]->drawAll();
+		}
+		text->drawText(50, 50, "0");
+		glfwSwapBuffers(window);
+		auto time_span = chrono::steady_clock::now() - t1;
+		this_thread::sleep_for(maxtime - time_span);
 	}
 
-
 	glfwTerminate();
-	string whocares;
-	getline(cin, whocares);
 }

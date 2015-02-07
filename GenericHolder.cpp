@@ -32,7 +32,7 @@ GLuint GenericHolder::setupDrawing(){
 	vertexShader = setupVertexShader();
 	glAttachShader(shaderProgram, vertexShader);
 	fragmentShader = setupFragmentShader();
-	glAttachShader(shaderProgram, setupFragmentShader());
+	glAttachShader(shaderProgram, fragmentShader);
 	glLinkProgram(shaderProgram);
 	glUseProgram(shaderProgram);
 
