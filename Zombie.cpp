@@ -34,7 +34,7 @@ Zombie::~Zombie()
 {
 }
 
-const int ZOMBIE_SPEED = 2;
+const double ZOMBIE_SPEED = 3.5;
 void Zombie::update()
 {
 	GenericObject* player = ThePlayer;
