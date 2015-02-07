@@ -6,7 +6,6 @@ class PlayerHolder: public GenericHolder
 public:
 	PlayerHolder();
 	~PlayerHolder();
-	std::vector<Player> objs;
-	GLuint vertexShader, fragmentShader, shaderProgram, posAttrib, uniTrans, vbo, vao;
+	GLuint vertexShader, fragmentShader, posAttrib, uniTrans, vbo, vao;
 };
 

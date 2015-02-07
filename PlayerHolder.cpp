@@ -20,7 +20,7 @@ const GLchar* fragmentSource =
 
 PlayerHolder::PlayerHolder()
 {
-	objs.push_back(Player());
+	objs.push_back(new Player());
 
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
