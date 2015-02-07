@@ -25,7 +25,5 @@ void Player::draw(GLuint shaderProgram)
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glDrawArrays(GL_TRIANGLES, 0, 3);
-	std::cout << x<<" "<<y << std::endl;
-
 
 }
