@@ -21,7 +21,7 @@ GLuint LineTripperHolder::setupFragmentShader(){
 		"#version 330 core\n"
 		"out vec4 outColor;"
 		"void main() {"
-		"   outColor = vec4(0.0, 1.0, 0.0, 1.0);"//RGBA
+		"   outColor = vec4(0.0, .2, 1.0, 1.0);"//RGBA
 		"}";
 	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragmentShader, 1, &fragmentSource, NULL);

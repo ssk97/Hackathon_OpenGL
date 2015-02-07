@@ -23,25 +23,29 @@ LineTripper::LineTripper()
         x = width;
         break;
     }
+
+    goalX = rand() % width;
+    goalY = rand() % height;
 }
 
 LineTripper::LineTripper(double xin, double yin)
 {
     x = xin;
     y = yin;
+
+    goalX = rand() % width;
+    goalY = rand() % height;
 }
 
 LineTripper::~LineTripper()
 {
 }
 
-const double LINETRIPPER_SPEED = 3.5;
+const double LINETRIPPER_SPEED = 4.5;
 void LineTripper::update()
 {
-	GenericObject* player = ThePlayer;
-
-	double delta_y = (player->y) - y;
-	double delta_x = (player->x) - x;
+	double delta_y = goalY - y;
+	double delta_x = goalX - x;
     angle = atan2(delta_y, delta_x);
 
 	x += LINETRIPPER_SPEED * cos(angle);

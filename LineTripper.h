@@ -9,4 +9,7 @@ public:
     void update();
     void collideWithPlayer();
     void collideWithFollower();
+private:
+    double goalX;
+    double goalY;
 };

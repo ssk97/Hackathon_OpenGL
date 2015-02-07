@@ -2,6 +2,7 @@
 #include "GenericObject.h"
 #include "ZombieHolder.h"
 #include "MothershipHolder.h"
+#include "LineTripperHolder.h"
 
 class Spawner
 {
