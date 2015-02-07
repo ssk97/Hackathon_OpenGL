@@ -99,6 +99,6 @@ void GenericHolder::drawAll()
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	for (std::vector<GenericObject*>::iterator it = objs.begin(); it != objs.end(); ++it){
 		(*it)->transform(shaderProgram);
-		(*it)->draw();
+		draw((*it));
 	}
 }

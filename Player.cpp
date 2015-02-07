@@ -19,3 +19,6 @@ void Player::draw()
 {
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 }
+
+
+

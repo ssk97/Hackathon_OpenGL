@@ -7,5 +7,6 @@ public:
 	PlayerHolder();
 	~PlayerHolder();
 	GLuint setupFragmentShader();
+	void draw(GenericObject *obj);
 };
 

@@ -39,8 +39,3 @@ void Follower::update()
 
 	angle += 1;
 }
-
-void Follower::draw()
-{
-	glDrawArrays(GL_TRIANGLE_FAN, 0, 182);
-}
