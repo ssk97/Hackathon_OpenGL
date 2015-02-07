@@ -3,6 +3,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <math.h>
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -13,7 +14,7 @@
 
 class GenericHolder;
 
-const int numTypes = 1;
+const int numTypes = 2;
 extern GenericHolder* holderArray[numTypes];
 const int PLAYER = 0, FOLLOWER = 1;
 
