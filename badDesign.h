@@ -12,6 +12,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#define PI 3.14159265
+#define Dsin(_inputVal) sin((_inputVal)*PI/180.0)
+#define Dcos(_inputVal) cos((_inputVal)*PI/180.0)
+
 class GenericHolder;
 
 const int numTypes = 2;
