@@ -26,3 +26,9 @@ PlayerHolder::~PlayerHolder()
 {
 
 }
+
+
+void PlayerHolder::draw(GenericObject *obj)
+{
+	glDrawArrays(GL_TRIANGLES, 0, 3);
+}

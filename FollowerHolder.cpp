@@ -13,7 +13,7 @@ FollowerHolder::~FollowerHolder()
 
 GLuint FollowerHolder::setupGeometry(){
 	GLuint vbo;
-	const int count = 62;
+	const int count = 64;
 	float vertices[count];
 	vertices[0] = 0.0f; vertices[1] = 0.0f;
 	for (int i = 2; i < count; i += 2){
@@ -24,4 +24,9 @@ GLuint FollowerHolder::setupGeometry(){
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	return vbo;
+}
+
+void FollowerHolder::draw(GenericObject *obj)
+{
+	glDrawArrays(GL_TRIANGLE_FAN, 0, 64);
 }
