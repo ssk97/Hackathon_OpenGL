@@ -91,10 +91,10 @@ int main()
 		glfwSwapBuffers(window);
 
 		auto time_span = chrono::steady_clock::now() - t1;
-		this_thread::sleep_for(maxtime - time_span);
 		cout <<score <<"    |"<< (maxtime - time_span).count() << endl;
 		if (!gameOver){
 			score++;
+		this_thread::sleep_for(maxtime - time_span);
 		}
 	}
 

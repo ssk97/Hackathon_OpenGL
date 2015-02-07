@@ -31,5 +31,5 @@ GLuint FollowerHolder::setupGeometry(){
 
 void FollowerHolder::draw(GenericObject *obj)
 {
-	glDrawArrays(GL_TRIANGLE_FAN, 0, 48);
+	glDrawArrays(GL_TRIANGLE_FAN, 0, 40);
 }

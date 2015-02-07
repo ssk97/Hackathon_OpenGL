@@ -11,4 +11,5 @@ protected:
 public:
     void possibleCollideWithPlayer();
     void possibleCollideWithFollower();
+	Enemy();
 };

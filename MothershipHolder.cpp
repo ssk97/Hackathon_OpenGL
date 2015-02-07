@@ -31,16 +31,15 @@ GLuint MothershipHolder::setupFragmentShader(){
 GLuint MothershipHolder::setupGeometry(){
 	GLuint vbo;
 	float vertices[] = {
-		-5.0f, -5.0f,
-		5.0f, -5.0f,
-		-5.0f, 5.0f,
-		5.0f, 5.0f,
+		-5.0f, -0.0f,
+		5.0f, -8.0f,
+		5.0f, 8.0f,
 		//end triangles, on to lines
-		5.0f, 5.0f,
-		10.0f, 7.0f,
+		5.0f, 8.0f,
+		-5.0f, 15.0f,
 
-		5.0f, -5.0f,
-		10.0f, -7.0f
+		5.0f, -8.0f,
+		-5.0f, -15.0f
 	};
 	glGenBuffers(1, &vbo); // Generate 1 buffer
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -49,7 +48,7 @@ GLuint MothershipHolder::setupGeometry(){
 }
 void MothershipHolder::draw(GenericObject *obj)
 {
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	glDrawArrays(GL_LINES, 4, 4);
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_LINES, 3, 4);
 }
 

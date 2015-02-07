@@ -1,6 +1,30 @@
 #include <math.h>
 #include "Enemy.h"
 
+Enemy::Enemy()
+{
+	switch (rand() % 4)
+	{
+	case 0:
+		y = 0;
+		x = rand() % width;
+		break;
+	case 1:
+		y = height;
+		x = rand() % width;
+		break;
+	case 2:
+		y = rand() % height;
+		x = 0;
+		break;
+	case 3:
+		y = rand() % height;
+		x = width;
+		break;
+	}
+	angle = ((double)rand() / RAND_MAX) * 360;
+}
+
 static bool checkCollisionLineCircle(double x0, double y0, double x1, double y1, double x2, double y2, double r)
 {//Check collision from line segment (x0,y0),(x1,y1) to circle (x2,y2) with radius r
 	//source: http://www.openprocessing.org/sketch/65771

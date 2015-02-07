@@ -6,28 +6,6 @@
 
 Mothership::Mothership()
 {
-    switch (rand() % 4)
-    {
-    case 0:
-        y = 0;
-        x = rand() % width;
-        break;
-    case 1:
-        y = height;
-        x = rand() % width;
-        break;
-    case 2:
-        y = rand() % height;
-        x = 0;
-        break;
-    case 3:
-        y = rand() % height;
-        x = width;
-        break;
-    }
-	angle = ((double)rand() / RAND_MAX) * 360;
-
-	updateOldPos();
 }
 
 Mothership::~Mothership()
