@@ -17,10 +17,5 @@ void Player::update()
 	glfwGetCursorPos(window, &x, &y);
 }
 
-void Player::draw()
-{
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-}
-
 
 

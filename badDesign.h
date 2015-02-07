@@ -18,9 +18,9 @@
 
 class GenericHolder;
 
-const int numTypes = 2;
+const int numTypes = 3;
 extern GenericHolder* holderArray[numTypes];
-const int PLAYER = 0, FOLLOWER = 1;
+const int PLAYER = 0, FOLLOWER = 1, ZOMBIE = 2;
 
 const int width = 1024;
 const int height = 768;

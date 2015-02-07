@@ -1,6 +1,7 @@
 #include "badDesign.h"
 #include "PlayerHolder.h"
 #include "FollowerHolder.h"
+#include "ZombieHolder.h"
 
 using namespace std;
  glm::mat4 view;
@@ -52,6 +53,7 @@ int main()
 	auto maxtime = chrono::milliseconds(1000 / 120);
 	holderArray[PLAYER] = new PlayerHolder();
 	holderArray[FOLLOWER] = new FollowerHolder();
+	holderArray[ZOMBIE] = new ZombieHolder();
 
 	for (int i = 0; i < numTypes; i++){
 		holderArray[i]->setupDrawing();
@@ -69,6 +71,7 @@ int main()
 		for (int i = 0; i < numTypes; i++){
 			holderArray[i]->updateAll();
 		}
+		((ZombieHolder*)(holderArray[ZOMBIE]))->potentiallyAddZombie();
 
         // Clear the screen to black
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
