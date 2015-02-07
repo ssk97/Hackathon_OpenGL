@@ -1,9 +1,10 @@
-#include "openGL_stuff.h"
+#include "badDesign.h"
 #include "PlayerHolder.h"
 
 using namespace std;
  glm::mat4 view;
  GLFWwindow* window;
+ GenericHolder* holderArray[numTypes];
 
  void checkShader(GLuint shader)
 {
@@ -48,7 +49,7 @@ int main()
 	view = glm::scale(view, glm::vec3(2.0 / width, -2.0 / height, 1.0));
 
 	auto maxtime = chrono::milliseconds(1000 / 120);
-	PlayerHolder *tmp = new PlayerHolder();
+	holderArray[PLAYER] = new PlayerHolder();
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -59,8 +60,12 @@ int main()
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 			glfwSetWindowShouldClose(window, GL_TRUE);
 
-		tmp -> updateAll();
-		tmp -> drawAll();
+		for (int i = 0; i < numTypes; i++){
+			holderArray[i]->updateAll();
+		}
+		for (int i = 0; i < numTypes; i++){
+			holderArray[i]->drawAll();
+		}
 		glfwSwapBuffers(window);
 
 		auto time_span = chrono::steady_clock::now() - t1;

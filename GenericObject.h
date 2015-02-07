@@ -1,6 +1,6 @@
 #pragma once
 //#include "GenericHolder.h"
-#include "openGL_stuff.h"
+#include "badDesign.h"
 class GenericObject
 {
 public:
