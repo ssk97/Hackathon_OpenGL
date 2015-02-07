@@ -27,6 +27,7 @@ Zombie::Zombie()
         x = width;
         break;
     }
+	updateOldPos();
 }
 
 Zombie::~Zombie()
@@ -40,10 +41,13 @@ void Zombie::update()
 
     double delta_y = mouseY - y;
     double delta_x = mouseX - x;
-    double angle = atan2(delta_y, delta_x);
+    angle = atan2(delta_y, delta_x);
 
     x += 4 * cos(angle);
     y += 4 * sin(angle);
+	angle = angle * 180 / PI;//convert to degrees
+
+	possibleCollideWithFollower();
 }
 
 void Zombie::collideWithPlayer()

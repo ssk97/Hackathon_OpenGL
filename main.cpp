@@ -50,7 +50,7 @@ int main()
 	view = glm::translate(view, glm::vec3(-1, 1, 0));
 	view = glm::scale(view, glm::vec3(2.0 / width, -2.0 / height, 1.0));
 
-	auto maxtime = chrono::milliseconds(1000 / 120);
+	auto maxtime = chrono::milliseconds(1000 / 60);
 	holderArray[PLAYER] = new PlayerHolder();
 	holderArray[FOLLOWER] = new FollowerHolder();
 	holderArray[ZOMBIE] = new ZombieHolder();
@@ -83,7 +83,7 @@ int main()
 
 		auto time_span = chrono::steady_clock::now() - t1;
 		this_thread::sleep_for(maxtime - time_span);
-
+		cout << (maxtime - time_span).count() << endl;
 	}
 
 

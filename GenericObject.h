@@ -8,8 +8,12 @@ public:
 	GenericObject();
 	~GenericObject();
 	double x=50, y=50, angle=0;
+	double oldx, oldy, oldangle;
+	bool markedForDeath = false;
 	GenericHolder *parent;
 	virtual void update() = 0;
-	void transform(GLuint shaderProgram);
+	void updateOldPos();
+	double distMoved();
+	void transform(GLuint shaderProgram, double t);
 };
 

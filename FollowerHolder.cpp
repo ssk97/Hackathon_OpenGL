@@ -1,9 +1,10 @@
 #include "FollowerHolder.h"
 
+Follower* TheFollower;
 FollowerHolder::FollowerHolder()
 {
-	addObj(new Follower());
-
+	TheFollower = new Follower();
+	addObj(TheFollower);
 }
 
 FollowerHolder::~FollowerHolder()
@@ -13,13 +14,13 @@ FollowerHolder::~FollowerHolder()
 
 GLuint FollowerHolder::setupGeometry(){
 	GLuint vbo;
-	const int count = 48;
+	const int count = 40;
 	float vertices[count * 2];
 	vertices[0] = 0.0f; vertices[1] = 0.0f;
 	int vertexNum = 2;
 	for (int i = 0; i < count-1; i += 1){
-		vertices[vertexNum++] = Dcos(i * 360 / (count-2))*((i % 2) * 25 + 25);
-		vertices[vertexNum++] = Dsin(i * 360 / (count-2))*((i % 2) * 25 + 25);
+		vertices[vertexNum++] = Dcos(i * 360 / (count-2))*((i % 2) * 25 + 20);
+		vertices[vertexNum++] = Dsin(i * 360 / (count-2))*((i % 2) * 25 + 20);
 	}
 	assert(vertexNum == count * 2);
 	glGenBuffers(1, &vbo); // Generate 1 buffer
@@ -30,5 +31,5 @@ GLuint FollowerHolder::setupGeometry(){
 
 void FollowerHolder::draw(GenericObject *obj)
 {
-	glDrawArrays(GL_TRIANGLE_FAN, 0, 64);
+	glDrawArrays(GL_TRIANGLE_FAN, 0, 48);
 }

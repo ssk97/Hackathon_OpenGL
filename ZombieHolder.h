@@ -5,7 +5,9 @@ class ZombieHolder : public GenericHolder
 public:
     ZombieHolder();
     ~ZombieHolder();
-    void potentiallyAddZombie();
+	void potentiallyAddZombie();
+	GLuint setupFragmentShader();
+	GLuint setupGeometry();
     void draw(GenericObject *obj);
     void removeZombie();
 };

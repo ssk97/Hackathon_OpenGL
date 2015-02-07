@@ -17,6 +17,11 @@
 #define Dcos(_inputVal) cos((_inputVal)*PI/180.0)
 
 class GenericHolder;
+class GenericObject;
+class Player;
+class Follower;
+extern Player* ThePlayer;
+extern Follower* TheFollower;
 
 const int numTypes = 3;
 extern GenericHolder* holderArray[numTypes];

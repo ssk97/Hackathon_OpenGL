@@ -98,7 +98,17 @@ void GenericHolder::drawAll()
 	glBindVertexArray(vao);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	for (std::vector<GenericObject*>::iterator it = objs.begin(); it != objs.end(); ++it){
-		(*it)->transform(shaderProgram);
-		draw((*it));
+		if ((*it)->markedForDeath){
+			it = objs.erase(it);
+		}
+		else
+		{
+			double reps = ((*it)->distMoved()) + 1;
+			for (int i = 0; i <= reps; i++){
+				(*it)->transform(shaderProgram, i / reps);
+				draw(*it);
+			}
+			(*it)->updateOldPos();
+		}
 	}
 }

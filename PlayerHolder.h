@@ -10,4 +10,3 @@ public:
 	GLuint setupGeometry();
 	void draw(GenericObject *obj);
 };
-
