@@ -6,7 +6,7 @@ class GenericObject
 {
 public:
 	GenericObject();
-	~GenericObject();
+	virtual ~GenericObject();
 	double x=50, y=50, angle=0;
 	double oldx, oldy, oldangle;
 	bool markedForDeath = false;

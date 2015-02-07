@@ -11,10 +11,11 @@ GenericObject::~GenericObject()
 {
 }
 
-void GenericObject::updateOldPos(){
+void GenericObject::updateOldPos() {
 	oldx = x; oldy = y;
 	oldangle = angle;
-}
+};
+
 double GenericObject::distMoved(){
 	return (abs(x - oldx) + abs(y - oldy)) / 4;
 }

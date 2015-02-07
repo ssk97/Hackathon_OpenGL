@@ -3,7 +3,7 @@
 class Mothership : public Enemy //Public Enemy Number 2.
 {
 public:
-    Mothership();
+    Mothership() ;
     ~Mothership();
     void update();
     void collideWithPlayer();
