@@ -9,6 +9,5 @@ public:
     void collideWithPlayer();
     void collideWithFollower();
 private:
-    double currentAngle;
     int framesAlive;
 };

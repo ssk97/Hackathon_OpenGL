@@ -15,6 +15,7 @@ void ZombieHolder::AddZombie()
 {
 	addObj(new Zombie());
 }
+
 GLuint ZombieHolder::setupFragmentShader(){
 	const GLchar* fragmentSource =
 		"#version 330 core\n"

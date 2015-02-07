@@ -15,10 +15,12 @@ void Spawner::tick()
 	time++;
 	if (time % 240 == 0){
 		wave++;
+		#ifndef NO_ZOMBIES
 		for (int i = 0; i < wave; i++){
 			((ZombieHolder*)(holderArray[ZOMBIE]))->AddZombie();
 		}
-		for (int i = 0; i < wave / 5; i++)
+		#endif // NO_ZOMBIES
+		for (int i = 0; i < wave / 5 ; i++)
 		{
             ((MothershipHolder*)(holderArray[MOTHERSHIP]))->addMothership();
 		}
