@@ -13,13 +13,15 @@ FollowerHolder::~FollowerHolder()
 
 GLuint FollowerHolder::setupGeometry(){
 	GLuint vbo;
-	const int count = 64;
-	float vertices[count];
+	const int count = 48;
+	float vertices[count * 2];
 	vertices[0] = 0.0f; vertices[1] = 0.0f;
-	for (int i = 2; i < count; i += 2){
-		vertices[i] = Dcos(i * 360 / (count-4))*((i % 4) * 25 + 25);
-		vertices[i + 1] = Dsin(i * 360 / (count-4))*((i % 4)*25+25);
+	int vertexNum = 2;
+	for (int i = 0; i < count-1; i += 1){
+		vertices[vertexNum++] = Dcos(i * 360 / (count-2))*((i % 2) * 25 + 25);
+		vertices[vertexNum++] = Dsin(i * 360 / (count-2))*((i % 2) * 25 + 25);
 	}
+	assert(vertexNum == count * 2);
 	glGenBuffers(1, &vbo); // Generate 1 buffer
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
