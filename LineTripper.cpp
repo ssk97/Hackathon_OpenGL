@@ -69,8 +69,10 @@ void LineTripper::update()
 
 
 	if (speed < 0.4){
-		if (aimX == targetX && aimY == targetX){
-			if (rand() % 2 == 1){
+		if (state == 0){
+			//0=shooting, 1=targetting
+			state = 1;
+			if ((rand() % 2) == 0){
 				aimX = ThePlayer->x;
 				aimY = ThePlayer->y;
 			} else {
@@ -78,19 +80,15 @@ void LineTripper::update()
 				aimY = rand() % height;
 			}
 		}
-		double delta_y = aimX - y;
-		double delta_x = aimY - x;
+		double delta_y = aimY - y;
+		double delta_x = aimX - x;
 		angle = atan2(delta_y, delta_x);
 		angle = angle * 180 / PI;//convert to degrees
 		if (speed < 0.2){
 			moveAngle = angle;
 			speed = LINETRIPPER_SPEED;
-			targetX = aimX;
-			targetY = aimY;
+			state = 0;
 		}
-	}
-	else {
-		angle = moveAngle;
 	}
 	speed *= .98;
 	y += speed * Dsin(moveAngle);

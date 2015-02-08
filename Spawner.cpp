@@ -14,11 +14,6 @@ void Spawner::tick()
 {
 	if (time++ % 250 == 0){
 		wave++;
-        for (int i = 0; i < wave; i++)
-        {
-            ((LineTripperHolder*)(holderArray[LINETRIPPER]))->AddLineTripper();
-            ((CarrierHolder*)(holderArray[CARRIER]))->AddCarrier();
-        }/*
 		int remainingCount = wave;
 
 		if (wave >= 3){
@@ -52,7 +47,7 @@ void Spawner::tick()
 		}
 		for (int i = 0; i < remainingCount; i++){
 			((ZombieHolder*)(holderArray[ZOMBIE]))->AddZombie();
-		}*/
+		}
 	}
 }
 
