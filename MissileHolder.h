@@ -10,5 +10,5 @@ public:
 	void AddMissile(double x, double y, double angle);
 	GLuint setupFragmentShader();
 	GLuint setupGeometry();
-    void draw(GenericObject *obj);
+    void draw();
 };

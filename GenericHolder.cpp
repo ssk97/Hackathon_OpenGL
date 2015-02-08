@@ -116,9 +116,21 @@ void GenericHolder::drawAll()
 			for (int i = 0; i <= reps; i++){
 				GLint uniTrans = glGetUniformLocation(shaderProgram, "trans");
 				glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(glm::interpolate(oldTrans, newTrans, i / (float)reps)));
-				draw(itObj);
+				draw();
 			}
 			++it;
 		}
 	}
+}
+void GenericHolder::drawOne(double x, double y)
+{
+	glUseProgram(shaderProgram);
+	glBindVertexArray(vao);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	GLint uniTrans = glGetUniformLocation(shaderProgram, "trans");
+
+	glm::mat4 trans;
+	trans = glm::translate(trans, glm::vec3((float)x, (float)y, 0.0));
+	glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(trans));
+	draw();
 }

@@ -40,9 +40,9 @@ void TextDisplay::setupDrawing(){
 	glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(view));
 }
 
-const int numVertex[] = {5, 2, 6, 7, 5, 6, 6, 3, 7, 5, 4, 6 };
-const int numPosStart[]={0, 5, 7, 13,20,25,31,36,39,46,51,55};
-//						 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, N, R };
+const int numVertex[] = {5, 2, 6, 7, 5, 6, 6, 3, 7, 5, 4, 6, 4};
+const int numPosStart[]={0, 5, 7, 13,20,25,31,36,39,46,51,55,61};
+//						 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, N, R, Z };
 const double textWidth = 12;
 const double textHeight = 16;
 const double textSpacing = 18;
@@ -126,6 +126,11 @@ GLuint TextDisplay::setupGeometry(){
 		1,1,
 		1,0,
 		-1,0,
+		1,-1,
+
+		-1,1,//Z
+		1,1,
+		-1,-1,
 		1,-1
 	};
 	glGenBuffers(1, &vbo); // Generate 1 buffer
@@ -213,7 +218,9 @@ void TextDisplay::drawChar(double x, double y, char chr)
 	case 'n':case 'N':
 			position = 10; break;
 	case 'r':case 'R':
-			position = 11; break;
+		position = 11; break;
+	case 'z':case 'Z':
+		position = 12; break;
 	}
 	glDrawArrays(GL_LINE_STRIP, numPosStart[position], numVertex[position]);
 

@@ -8,6 +8,6 @@ public:
 	FollowerHolder();
 	~FollowerHolder();
 	GLuint setupGeometry();
-	void draw(GenericObject* obj);
+	void draw();
 };
 

@@ -9,5 +9,5 @@ public:
 	void AddZombie();
 	GLuint setupFragmentShader();
 	GLuint setupGeometry();
-    void draw(GenericObject *obj);
+    void draw();
 };

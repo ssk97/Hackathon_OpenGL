@@ -53,8 +53,7 @@ GLuint CarrierHolder::setupGeometry(){
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	return vbo;
 }
-void CarrierHolder::draw(GenericObject *obj)
+void CarrierHolder::draw()
 {
-    glDrawArrays(GL_TRIANGLES, 0, 12);
+	glDrawArrays(GL_TRIANGLES, 0, 12);
 }
-

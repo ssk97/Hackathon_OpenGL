@@ -46,9 +46,8 @@ GLuint MothershipHolder::setupGeometry(){
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	return vbo;
 }
-void MothershipHolder::draw(GenericObject *obj)
+void MothershipHolder::draw()
 {
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_TRIANGLES, 0, 3);
 	glDrawArrays(GL_LINES, 3, 4);
 }
-

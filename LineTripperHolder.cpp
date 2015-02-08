@@ -48,9 +48,9 @@ GLuint LineTripperHolder::setupGeometry(){
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	return vbo;
 }
-void LineTripperHolder::draw(GenericObject *obj)
+void LineTripperHolder::draw()
 {
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glDrawArrays(GL_LINES, 4, 4);
 }
 

@@ -53,7 +53,7 @@ GLuint PlayerHolder::setupGeometry(){
 }
 
 
-void PlayerHolder::draw(GenericObject *obj)
+void PlayerHolder::draw()
 {
 	glDrawArrays(GL_TRIANGLES, 0, 9);
 	glDrawArrays(GL_LINE_LOOP, 9, 36);
