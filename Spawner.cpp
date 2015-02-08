@@ -12,9 +12,8 @@ Spawner::~Spawner()
 
 void Spawner::tick()
 {
-	if (time++ % 240 == 0){
+	if (time++ % 250 == 0){
 		wave++;
-		((LineTripperHolder*)(holderArray[LINETRIPPER]))->AddLineTripper();
 		int remainingCount = wave;
 		if (wave >= 3){
 			int motherShipCount = (rand() % (remainingCount / 2));

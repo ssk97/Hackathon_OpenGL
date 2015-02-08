@@ -12,4 +12,5 @@ public:
     void possibleCollideWithPlayer();
     void possibleCollideWithFollower();
 	Enemy();
+	int size;
 };

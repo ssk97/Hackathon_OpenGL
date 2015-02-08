@@ -56,10 +56,11 @@ static bool checkCollisionLineCircle(double x0, double y0, double x1, double y1,
 	return false;
 }
 
+//sizes are size of enemy, radius
 void Enemy::possibleCollideWithPlayer()
 {
 	GenericObject* player = ThePlayer;
-	if (score > 100 && checkCollisionLineCircle(player->oldx, player->oldy, player->x, player->y, x, y, 25)){
+	if (score > 100 && checkCollisionLineCircle(player->oldx, player->oldy, player->x, player->y, x, y, size+20)){
 		gameOver = true;
 	}
 }
@@ -68,7 +69,7 @@ void Enemy::possibleCollideWithFollower()
 { 
 
 	GenericObject* follower = TheFollower;
-	if (checkCollisionLineCircle(follower->oldx, follower->oldy, follower->x, follower->y,x,y,20)){
+	if (checkCollisionLineCircle(follower->oldx, follower->oldy, follower->x, follower->y,x,y,size+15)){
 		markedForDeath = true;
 	}
 }

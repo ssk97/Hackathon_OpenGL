@@ -7,7 +7,8 @@ public:
     ~Mothership();
     void update();
     void collideWithPlayer();
-    void collideWithFollower();
+	void collideWithFollower();
+	int size = 5;
 private:
     int framesAlive;
 };

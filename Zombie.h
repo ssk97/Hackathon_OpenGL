@@ -8,5 +8,6 @@ public:
     ~Zombie();
     void update();
     void collideWithPlayer();
-    void collideWithFollower();
+	void collideWithFollower();
+	int size = 5;
 };

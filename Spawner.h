@@ -12,6 +12,6 @@ public:
 	~Spawner();
 	void tick();
 	int wave = 0;
-	int time = 0;
+	unsigned long long time = 0;
 };
 

@@ -100,11 +100,13 @@ int main()
 		text->drawNumber(52, 52, score);
 		glfwSwapBuffers(window);
 
-		//cout <<score <<"    |"<< (maxtime - time_span).count() << endl;
 		if (!gameOver){
 			score++;
 		}
 		auto time_span = chrono::steady_clock::now() - t1;
+		if ((maxtime - time_span).count() < 0){
+			cout << (maxtime - time_span).count() << endl;
+		}
 		this_thread::sleep_for(maxtime - time_span);
 	}
 	//game over screen
