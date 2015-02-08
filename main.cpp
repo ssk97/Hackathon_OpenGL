@@ -14,7 +14,7 @@ using namespace std;
  GLFWwindow* window;
  GenericHolder* holderArray[numTypes];
  bool gameOver;
- unsigned long score;
+ unsigned long long score;
 
  void checkShader(GLuint shader)
 {

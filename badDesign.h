@@ -24,7 +24,7 @@ class Follower;
 extern Player* ThePlayer;
 extern Follower* TheFollower;
 extern bool gameOver;
-extern unsigned long score;
+extern unsigned long long score;
 
 const int numTypes = 7;
 extern GenericHolder* holderArray[numTypes];
