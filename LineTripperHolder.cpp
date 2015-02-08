@@ -32,16 +32,16 @@ GLuint LineTripperHolder::setupFragmentShader(){
 GLuint LineTripperHolder::setupGeometry(){
 	GLuint vbo;
 	float vertices[] = {
-		-5.0f, -5.0f,
-		5.0f, -5.0f,
-		-5.0f, 5.0f,
-		5.0f, 5.0f,
+		0,8,
+		-5,0,
+		15,0,
+		0,-8,
 		//end triangles, on to lines
-		5.0f, 5.0f,
-		10.0f, 7.0f,
+		0,2,
+		-10,2,
 
-		5.0f, -5.0f,
-		10.0f, -7.0f
+		0,-2,
+		-10,-2
 	};
 	glGenBuffers(1, &vbo); // Generate 1 buffer
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);

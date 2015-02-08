@@ -24,10 +24,8 @@ LineTripper::LineTripper()
         break;
     }
 
-    goalX = rand() % width;
-    goalY = rand() % height;
-    targetX = rand() % width;
-    targetY = rand() % height;
+	aimX = rand() % width;
+	aimY = rand() % height;
 	speed = 0;
 }
 
@@ -36,8 +34,8 @@ LineTripper::LineTripper(double xin, double yin)
     x = xin;
     y = yin;
 
-    goalX = rand() % width;
-	goalY = rand() % height;
+	aimX = rand() % width;
+	aimY = rand() % height;
 	speed = 0;
 }
 
@@ -45,39 +43,51 @@ LineTripper::~LineTripper()
 {
 }
 
-const double LINETRIPPER_SPEED = 6;
+const double LINETRIPPER_SPEED = 10;
 void LineTripper::update()
 {
 	//bounce
-	if (speed < 0.5){
-		double delta_y = goalY - y;
-		double delta_x = goalX - x;
+	double randomAngle = ((double)rand() / RAND_MAX) * 180 - 90;
+	if (x > width)
+	{
+		moveAngle = 180 + randomAngle;
+	}
+	else if (x < 0)
+	{
+		moveAngle = 0 + randomAngle;
+	}
+	else if (y > height)
+	{
+		moveAngle = 270 + randomAngle;
+	}
+	else if (y < 0)
+	{
+		moveAngle = 90 + randomAngle;
+	}
+
+
+	if (speed < 0.4){
+		if (aimX == targetX && aimY == targetX){
+			if (rand() % 2 == 1){
+				aimX = ThePlayer->x;
+				aimY = ThePlayer->y;
+			} else {
+				aimX = rand() % width;
+				aimY = rand() % height;
+			}
+		}
+		double delta_y = aimX - y;
+		double delta_x = aimY - x;
 		angle = atan2(delta_y, delta_x);
 		angle = angle * 180 / PI;//convert to degrees
 		if (speed < 0.2){
 			moveAngle = angle;
 			speed = LINETRIPPER_SPEED;
+			targetX = aimX;
+			targetY = aimY;
 		}
 	}
 	else {
-		double randomAngle = ((double)rand() / RAND_MAX) * 180 - 90;
-		if (x > width)
-		{
-			moveAngle = 180 + randomAngle;
-		}
-		else if (x < 0)
-		{
-			moveAngle = 0 + randomAngle;
-		}
-		else if (y > height)
-		{
-			moveAngle = 270 + randomAngle;
-		}
-		else if (y < 0)
-		{
-			moveAngle = 90 + randomAngle;
-		}
-
 		angle = moveAngle;
 	}
 	speed *= .98;

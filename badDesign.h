@@ -11,7 +11,6 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include <SOIL.h>
 
 #define PI 3.14159265
 #define Dsin(_inputVal) sin((_inputVal)*PI/180.0)
