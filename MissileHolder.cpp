@@ -37,17 +37,12 @@ GLuint MissileHolder::setupFragmentShader(){
 GLuint MissileHolder::setupGeometry(){
 	GLuint vbo;
 	float vertices[] = {
-		-5.0f, -5.0f,
-		5.0f, -5.0f,
-		-5.0f, 5.0f,
-		5.0f, 5.0f,
-		//end triangles, on to lines
-		3.0f, 3.0f,
-		5.0f, 3.0f,
-
-		3.0f, -3.0f,
-		5.0f, -3.0f
-	};
+		-4, 3,
+		-4, -3,
+		0, 3,
+		-0, -3,
+		10, 0
+			};
 	glGenBuffers(1, &vbo); // Generate 1 buffer
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -55,7 +50,6 @@ GLuint MissileHolder::setupGeometry(){
 }
 void MissileHolder::draw(GenericObject *obj)
 {
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	//glDrawArrays(GL_LINES, 4, 4);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 5);
 }
 

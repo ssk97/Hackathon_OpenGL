@@ -32,16 +32,21 @@ GLuint CarrierHolder::setupFragmentShader(){
 GLuint CarrierHolder::setupGeometry(){
 	GLuint vbo;
 	float vertices[] = {
-		-6.0f, -6.0f,
-		6.0f, -6.0f,
-		-6.0f, 6.0f,
-		6.0f, 6.0f,
-		//end triangles, on to lines
-		5.0f, 5.0f,
-		10.0f, 7.0f,
+		-8, 6,
+		-8, -6,
+		8, 6,
 
-		5.0f, -5.0f,
-		10.0f, -7.0f
+		8, -6,
+		8, 6,
+		-8, -6,
+
+		8, 6,
+		14, 2,
+		8, 2,
+
+		8, -6,
+		14, -2,
+		8, -2
 	};
 	glGenBuffers(1, &vbo); // Generate 1 buffer
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -50,7 +55,6 @@ GLuint CarrierHolder::setupGeometry(){
 }
 void CarrierHolder::draw(GenericObject *obj)
 {
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	glDrawArrays(GL_LINES, 4, 4);
+    glDrawArrays(GL_TRIANGLES, 0, 12);
 }
 
