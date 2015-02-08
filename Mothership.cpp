@@ -6,6 +6,7 @@
 
 Mothership::Mothership()
 {
+    size = 5;
 }
 
 Mothership::~Mothership()

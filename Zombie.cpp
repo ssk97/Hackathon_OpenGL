@@ -23,12 +23,14 @@ Zombie::Zombie()
         x = width;
         break;
     }
+    size = 5;
 }
 
 Zombie::Zombie(double xin, double yin)
 {
     x = xin;
     y = yin;
+    size = 5;
 }
 
 Zombie::~Zombie()

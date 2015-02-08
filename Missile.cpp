@@ -24,6 +24,7 @@ Missile::Missile()
         break;
     }
     angle = 0;
+    size = 1;
 }
 
 Missile::Missile(double xin, double yin, double angle)
@@ -31,6 +32,7 @@ Missile::Missile(double xin, double yin, double angle)
     x = xin;
     y = yin;
     this->angle = angle;
+    size = 1;
 }
 
 Missile::~Missile()

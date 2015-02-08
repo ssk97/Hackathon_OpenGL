@@ -27,6 +27,7 @@ LineTripper::LineTripper()
 	aimX = rand() % width;
 	aimY = rand() % height;
 	speed = 0;
+	size = 5;
 }
 
 LineTripper::LineTripper(double xin, double yin)
@@ -37,6 +38,7 @@ LineTripper::LineTripper(double xin, double yin)
 	aimX = rand() % width;
 	aimY = rand() % height;
 	speed = 0;
+	size = 5;
 }
 
 LineTripper::~LineTripper()

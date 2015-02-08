@@ -24,12 +24,15 @@ Carrier::Carrier()
         x = width;
         break;
     }
+
+    size = 5;
 }
 
 Carrier::Carrier(double xin, double yin)
 {
     x = xin;
     y = yin;
+    size = 5;
 }
 
 Carrier::~Carrier()
@@ -37,7 +40,7 @@ Carrier::~Carrier()
 }
 
 const double CARRIER_SPEED = 1.5;
-const int FRAMES_PER_Missile = 60;
+const int FRAMES_PER_Missile = 90;
 void Carrier::update()
 {
     numFramesSinceMissile++;

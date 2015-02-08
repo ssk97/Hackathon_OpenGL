@@ -9,5 +9,4 @@ public:
     void update();
     void collideWithPlayer();
 	void collideWithFollower();
-	int size = 5;
 };
