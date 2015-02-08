@@ -12,9 +12,9 @@ public:
 	~Spawner();
 	void tick();
 	int wave = 0;
-	unsigned long long time = 0;
-	enum Mode {Normal, CTRush};
-    Mode mode = Normal;
+	unsigned long long time = 0; //Want to reach the maximum?  You have a long, long time before that happens.
+	enum Mode {NO_MODE, Normal, CTRush};
+    Mode mode = NO_MODE;
 private:
     void wave_normal();
     void wave_CTRush();
