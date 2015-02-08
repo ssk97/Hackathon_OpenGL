@@ -12,7 +12,12 @@ Spawner::~Spawner()
 
 void Spawner::tick()
 {
-	if (time++ % 250 == 0){
+	if (mode == NO_MODE)
+	{
+		if (glfwGetKey(window, GLFW_KEY_N)) mode = Normal;
+		if (glfwGetKey(window, GLFW_KEY_R)) mode = CTRush;
+	}
+	else if (time++ % 250 == 0){
 		wave++;
 		switch (mode)
 		{
@@ -22,6 +27,9 @@ void Spawner::tick()
 		case CTRush:
 			wave_CTRush();
 			break;
+		default:
+			break;
+
 		}
 	}
 }
