@@ -9,6 +9,6 @@ public:
 	void addMothership();
 	GLuint setupFragmentShader();
 	GLuint setupGeometry();
-    void draw(GenericObject *obj);
+    void draw();
 
 };

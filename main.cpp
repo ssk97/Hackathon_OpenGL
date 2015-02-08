@@ -101,7 +101,13 @@ int main()
 		if (spawnController->mode == Spawner::NO_MODE)
 		{
 			text->drawChar(100, 500, 'N');
+			holderArray[ZOMBIE]->drawOne(100, 550);
+			holderArray[MOTHERSHIP]->drawOne(100, 570);
+			holderArray[LINETRIPPER]->drawOne(100, 590);
+			holderArray[CARRIER]->drawOne(100, 610);
 			text->drawChar(300, 500, 'R');
+			holderArray[CARRIER]->drawOne(300, 550);
+			holderArray[LINETRIPPER]->drawOne(300, 570);
 		}
 		glfwSwapBuffers(window);
 

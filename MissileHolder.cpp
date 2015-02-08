@@ -48,8 +48,8 @@ GLuint MissileHolder::setupGeometry(){
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	return vbo;
 }
-void MissileHolder::draw(GenericObject *obj)
+void MissileHolder::draw()
 {
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 5);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 5);
 }
 

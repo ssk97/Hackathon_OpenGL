@@ -8,7 +8,8 @@ public:
 	~GenericHolder();
 	void updateAll();
 	void drawAll();
-	virtual void draw(GenericObject *obj) = 0;//draws one object based on the object's transformations
+	virtual void draw() = 0;//draws one copy of the object with currently setup transitions
+	void drawOne(double x, double y);//draws once
 	void addObj(GenericObject *obj);
 	virtual GLuint setupDrawing();
 	virtual GLuint setupVertexShader();

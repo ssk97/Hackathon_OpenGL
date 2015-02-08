@@ -48,9 +48,8 @@ GLuint ZombieHolder::setupGeometry(){
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	return vbo;
 }
-void ZombieHolder::draw(GenericObject *obj)
+void ZombieHolder::draw()
 {
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glDrawArrays(GL_LINES, 4, 4);
 }
-

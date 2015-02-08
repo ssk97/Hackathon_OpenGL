@@ -29,7 +29,8 @@ GLuint FollowerHolder::setupGeometry(){
 	return vbo;
 }
 
-void FollowerHolder::draw(GenericObject *obj)
+
+void FollowerHolder::draw()
 {
 	glDrawArrays(GL_TRIANGLE_FAN, 0, 40);
 }
