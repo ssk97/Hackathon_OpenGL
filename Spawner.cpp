@@ -16,6 +16,7 @@ void Spawner::tick()
 	{
 		if (glfwGetKey(window, GLFW_KEY_N)) mode = Normal;
 		if (glfwGetKey(window, GLFW_KEY_R)) mode = CTRush;
+		if (glfwGetKey(window, GLFW_KEY_Z)) mode = Zombie;
 	}
 	else if (time++ % 250 == 0){
 		wave++;
@@ -23,10 +24,13 @@ void Spawner::tick()
 		{
 		case Normal:
 			wave_normal();
-			break;
+            break;
 		case CTRush:
 			wave_CTRush();
 			break;
+        case Zombie:
+            wave_zombie();
+            break;
 		default:
 			break;
 
@@ -94,4 +98,10 @@ void Spawner::wave_CTRush()
 	}
 }
 
-
+void Spawner::wave_zombie()
+{
+    for (int i = 0; i < wave * 5; i++)
+    {
+        ((ZombieHolder*)(holderArray[ZOMBIE]))->AddZombie();
+    }
+}
