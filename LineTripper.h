@@ -15,4 +15,6 @@ private:
     bool atGoal;
     double targetX;
     double targetY;
+	double speed;
+	double moveAngle;
 };

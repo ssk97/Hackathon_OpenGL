@@ -96,7 +96,8 @@ int main()
 		for (int i = 0; i < numTypes; i++){
 			holderArray[i]->drawAll();
 		}
-		text->drawNumber(50,50,score);
+		text->drawNumber(50, 50, score);
+		text->drawNumber(52, 52, score);
 		glfwSwapBuffers(window);
 
 		//cout <<score <<"    |"<< (maxtime - time_span).count() << endl;
@@ -123,6 +124,7 @@ int main()
 		}
 
 		text->drawNumber(50, 50, score);
+		text->drawNumber(52, 52, score);
 		glfwSwapBuffers(window);
 		auto time_span = chrono::steady_clock::now() - t1;
 		this_thread::sleep_for(maxtime - time_span);

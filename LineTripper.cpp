@@ -28,6 +28,7 @@ LineTripper::LineTripper()
     goalY = rand() % height;
     targetX = rand() % width;
     targetY = rand() % height;
+	speed = 0;
 }
 
 LineTripper::LineTripper(double xin, double yin)
@@ -36,24 +37,52 @@ LineTripper::LineTripper(double xin, double yin)
     y = yin;
 
     goalX = rand() % width;
-    goalY = rand() % height;
+	goalY = rand() % height;
+	speed = 0;
 }
 
 LineTripper::~LineTripper()
 {
 }
 
-const double LINETRIPPER_SPEED = 4.5;
+const double LINETRIPPER_SPEED = 6;
 void LineTripper::update()
 {
-	double delta_y = goalY - y;
-	double delta_x = goalX - x;
-    angle = atan2(delta_y, delta_x);
+	//bounce
+	if (speed < 0.5){
+		double delta_y = goalY - y;
+		double delta_x = goalX - x;
+		angle = atan2(delta_y, delta_x);
+		angle = angle * 180 / PI;//convert to degrees
+		if (speed < 0.2){
+			moveAngle = angle;
+			speed = LINETRIPPER_SPEED;
+		}
+	}
+	else {
+		double randomAngle = ((double)rand() / RAND_MAX) * 180 - 90;
+		if (x > width)
+		{
+			moveAngle = 180 + randomAngle;
+		}
+		else if (x < 0)
+		{
+			moveAngle = 0 + randomAngle;
+		}
+		else if (y > height)
+		{
+			moveAngle = 270 + randomAngle;
+		}
+		else if (y < 0)
+		{
+			moveAngle = 90 + randomAngle;
+		}
 
-	x += LINETRIPPER_SPEED * cos(angle);
-	y += LINETRIPPER_SPEED * sin(angle);
-	angle = angle * 180 / PI;//convert to degrees
-
+		angle = moveAngle;
+	}
+	speed *= .98;
+	y += speed * Dsin(moveAngle);
+	x += speed * Dcos(moveAngle);
 	possibleCollideWithFollower();
 	possibleCollideWithPlayer();
 }
