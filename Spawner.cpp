@@ -30,8 +30,21 @@ void Spawner::wave_normal()
 {
     int remainingCount = wave;
 
+    if (wave % 10 == 0) //BOSS WAVE!
+    {
+        for (int i = 0; i < wave / 2; i++) //EAT CARRIERS!
+        {
+            ((CarrierHolder*)(holderArray[CARRIER]))->AddCarrier();
+        }
+        for (int i = 0; i < wave / 2; i++) //And these, too,
+        {
+            ((LineTripperHolder*)(holderArray[LINETRIPPER]))->AddLineTripper();
+        }
+        remainingCount = 0; //Nothing else needs to happen.
+    }
+    if (wave % 10 == 1 && wave > 10) remainingCount = 0; //Reward for stopping a boss.
     if (wave >= 3){
-        int motherShipCount = (rand() % (remainingCount / 2));
+        int motherShipCount = remainingCount > 0 ? (rand() % (remainingCount / 2)) : 0;
         for (int i = 0; i < motherShipCount; i++)
         {
             ((MothershipHolder*)(holderArray[MOTHERSHIP]))->addMothership();
