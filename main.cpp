@@ -107,7 +107,12 @@ int main()
 			holderArray[CARRIER]->drawOne(100, 610);
 			text->drawChar(300, 500, 'R');
 			holderArray[CARRIER]->drawOne(300, 550);
-			holderArray[LINETRIPPER]->drawOne(300, 570);
+			holderArray[MOTHERSHIP]->drawOne(300, 570);
+			text->drawChar(500, 500, 'Z');
+			holderArray[ZOMBIE]->drawOne(500, 530);
+			holderArray[ZOMBIE]->drawOne(510, 550);
+			holderArray[ZOMBIE]->drawOne(490, 560);
+			holderArray[LINETRIPPER]->drawOne(500, 590);
 		}
 		glfwSwapBuffers(window);
 
