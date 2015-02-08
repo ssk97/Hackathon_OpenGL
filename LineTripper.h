@@ -12,8 +12,7 @@ public:
 private:
     double aimX;
     double aimY;
-    double targetX;
-    double targetY;
+	int state;//0=shooting, 1=targetting
 	double speed;
 	double moveAngle;
 };

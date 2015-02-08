@@ -98,6 +98,11 @@ int main()
 		}
 		text->drawNumber(50, 50, score);
 		text->drawNumber(52, 52, score);
+		if (spawnController->mode == Spawner::NO_MODE)
+		{
+			text->drawChar(100, 500, 'N');
+			text->drawChar(300, 500, 'R');
+		}
 		glfwSwapBuffers(window);
 
 		if (!gameOver && spawnController->mode != Spawner::NO_MODE){
@@ -110,8 +115,9 @@ int main()
 		this_thread::sleep_for(maxtime - time_span);
 	}
 	//game over screen
+	int counter = 0;
 	while (!glfwWindowShouldClose(window))
-	{
+	{	
 		chrono::steady_clock::time_point t1 = chrono::steady_clock::now();
 
 		checkErrors();
@@ -124,9 +130,11 @@ int main()
 		for (int i = 0; i < numTypes; i++){
 			holderArray[i]->drawAll();
 		}
-
-		text->drawNumber(50, 50, score);
-		text->drawNumber(52, 52, score);
+		if (counter++ < 45){
+			text->drawNumber(50, 50, score);
+			text->drawNumber(52, 52, score);
+		}
+		else if (counter >= 80){ counter = 0; }
 		glfwSwapBuffers(window);
 		auto time_span = chrono::steady_clock::now() - t1;
 		this_thread::sleep_for(maxtime - time_span);
