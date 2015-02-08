@@ -40,9 +40,9 @@ void TextDisplay::setupDrawing(){
 	glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(view));
 }
 
-const int numVertex[] = {5, 2, 6, 7, 5, 6, 6, 3, 7, 5 };
-const int numPosStart[]={0, 5, 7, 13,20,25,31,36,39,46};
-//						 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+const int numVertex[] = {5, 2, 6, 7, 5, 6, 6, 3, 7, 5, 4, 6 };
+const int numPosStart[]={0, 5, 7, 13,20,25,31,36,39,46,51,55};
+//						 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, N, R };
 const double textWidth = 12;
 const double textHeight = 16;
 const double textSpacing = 18;
@@ -56,10 +56,8 @@ GLuint TextDisplay::setupGeometry(){
 		1, -1,
 		-1, -1,
 
-
 		0, -1,//1
 		0, 1,
-
 
 		-1, 1,//2
 		1, 1,
@@ -67,7 +65,6 @@ GLuint TextDisplay::setupGeometry(){
 		-1, -.2,
 		-1, -1,
 		1, -1,
-
 
 		-1, 1,//3
 		1, 1,
@@ -115,6 +112,21 @@ GLuint TextDisplay::setupGeometry(){
 		1,0
 
 
+
+
+
+		-1,-1,//N
+		-1,1,
+		1,-1,
+		1,1,
+
+
+		-1,-1,//R
+		-1,1,
+		1,1,
+		1,0,
+		-1,0,
+		1,-1
 	};
 	glGenBuffers(1, &vbo); // Generate 1 buffer
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -128,22 +140,20 @@ GLuint TextDisplay::setupVertexShader(){
 		"uniform mat4 trans;"
 		"uniform mat4 view;"
 		"void main() {"
-		"   gl_Position = view*trans*vec4(position, 0.0, 1.0);"//xyzw
+		" gl_Position = view*trans*vec4(position, 0.0, 1.0);"//xyzw
 		"}";
-
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertexShader, 1, &vertexSource, NULL);
 	glCompileShader(vertexShader);
 	checkShader(vertexShader);
 	return vertexShader;
 }
-
 GLuint TextDisplay::setupFragmentShader(){
 	const GLchar* fragmentSource =
 		"#version 330 core\n"
 		"out vec4 outColor;"
 		"void main() {"
-		"   outColor = vec4(1.0, 0.0, 0.0, 1.0);"//RGBA
+		" outColor = vec4(1.0, 0.0, 0.0, 1.0);"//RGBA
 		"}";
 	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
@@ -151,19 +161,36 @@ GLuint TextDisplay::setupFragmentShader(){
 	checkShader(fragmentShader);
 	return fragmentShader;
 }
-//	~TextDisplay();
-void TextDisplay::drawNumber(double x, double y, int num)
-{
+glm::mat4 TextDisplay::initDraw(){
+
 	glUseProgram(shaderProgram);
 	glBindVertexArray(vao);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glm::mat4 scaler;
-	scaler = glm::scale(scaler, glm::vec3((float)textWidth/2, (float)-textHeight, 0.0));
+	scaler = glm::scale(scaler, glm::vec3((float)textWidth / 2, (float)-textHeight, 0.0));
+	GLint uniTrans = glGetUniformLocation(shaderProgram, "trans");
+	glUseProgram(shaderProgram);
+	return scaler;
+}
+void TextDisplay::endDraw(){
+	glDisableClientState(GL_COLOR_ARRAY);
+}
+//	~TextDisplay();
+void TextDisplay::drawNumber(double x, double y, int num)
+{
+	//glm::mat4 scaler = initDraw();
+	glUseProgram(shaderProgram);
+	glBindVertexArray(vao);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glm::mat4 scaler;
+	scaler = glm::scale(scaler, glm::vec3((float)textWidth / 2, (float)-textHeight, 0.0));
 	GLint uniTrans = glGetUniformLocation(shaderProgram, "trans");
 	glUseProgram(shaderProgram);
 	int place = 0;
 	//std::cout << std::endl;
-	int maxdigit = pow(10, floor(log10(num)));
+	int maxdigit;
+	if (num == 0) maxdigit = 1;
+	else maxdigit = pow(10, floor(log10(num)));
 	while (maxdigit > 0){
 		glm::mat4 trans;
 		trans = glm::translate(trans, glm::vec3((float)x+(place*textSpacing), (float)y, 0.0));
@@ -178,6 +205,23 @@ void TextDisplay::drawNumber(double x, double y, int num)
 		place++;
 		maxdigit /= 10;
 	}
+	endDraw();
 }
-//GLuint shaderProgram, vertexShader, fragmentShader, posAttrib, uniTrans, vbo, vao;
-//};
+void TextDisplay::drawChar(double x, double y, char chr)
+{
+	glm::mat4 scaler = initDraw();
+	
+	glm::mat4 trans;
+	trans = glm::translate(trans, glm::vec3((float)x, (float)y, 0.0));
+	glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(trans*scaler));
+	int position;
+	switch (chr){
+	case 'n':case 'N':
+			position = 10; break;
+	case 'r':case 'R':
+			position = 11; break;
+	}
+	glDrawArrays(GL_LINE_STRIP, numPosStart[position], numVertex[position]);
+
+	endDraw();
+}
