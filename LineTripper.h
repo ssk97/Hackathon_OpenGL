@@ -10,9 +10,8 @@ public:
     void collideWithPlayer();
     void collideWithFollower();
 private:
-    double goalX;
-    double goalY;
-    bool atGoal;
+    double aimX;
+    double aimY;
     double targetX;
     double targetY;
 	double speed;
