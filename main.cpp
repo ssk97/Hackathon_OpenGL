@@ -98,15 +98,15 @@ int main()
 		}
 		text->drawNumber(50, 50, score);
 		text->drawNumber(52, 52, score);
-		glfwSwapBuffers(window);
-
-		if (!gameOver && spawnController->mode != Spawner::NO_MODE){
-			score++;
-		}
 		if (spawnController->mode == Spawner::NO_MODE)
 		{
 			text->drawChar(100, 500, 'N');
 			text->drawChar(300, 500, 'R');
+		}
+		glfwSwapBuffers(window);
+
+		if (!gameOver && spawnController->mode != Spawner::NO_MODE){
+			score++;
 		}
 		auto time_span = chrono::steady_clock::now() - t1;
 		if ((maxtime - time_span).count() < 0){

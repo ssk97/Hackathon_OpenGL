@@ -109,7 +109,7 @@ GLuint TextDisplay::setupGeometry(){
 		1,1,
 		-1,1,
 		-1,0,
-		1,0
+		1,0,
 
 
 
@@ -161,8 +161,12 @@ GLuint TextDisplay::setupFragmentShader(){
 	checkShader(fragmentShader);
 	return fragmentShader;
 }
-glm::mat4 TextDisplay::initDraw(){
-
+void TextDisplay::endDraw(){
+	//glDisableClientState(GL_COLOR_ARRAY);
+}
+//	~TextDisplay();
+void TextDisplay::drawNumber(double x, double y, int num)
+{
 	glUseProgram(shaderProgram);
 	glBindVertexArray(vao);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -170,15 +174,6 @@ glm::mat4 TextDisplay::initDraw(){
 	scaler = glm::scale(scaler, glm::vec3((float)textWidth / 2, (float)-textHeight, 0.0));
 	GLint uniTrans = glGetUniformLocation(shaderProgram, "trans");
 	glUseProgram(shaderProgram);
-	return scaler;
-}
-void TextDisplay::endDraw(){
-	//glDisableClientState(GL_COLOR_ARRAY);
-}
-//	~TextDisplay();
-void TextDisplay::drawNumber(double x, double y, int num)
-{
-	glm::mat4 scaler = initDraw();
 	int place = 0;
 	//std::cout << std::endl;
 	int maxdigit;
@@ -202,7 +197,13 @@ void TextDisplay::drawNumber(double x, double y, int num)
 }
 void TextDisplay::drawChar(double x, double y, char chr)
 {
-	glm::mat4 scaler = initDraw();
+	glUseProgram(shaderProgram);
+	glBindVertexArray(vao);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glm::mat4 scaler;
+	scaler = glm::scale(scaler, glm::vec3((float)textWidth / 2, (float)-textHeight, 0.0));
+	GLint uniTrans = glGetUniformLocation(shaderProgram, "trans");
+	glUseProgram(shaderProgram);
 	
 	glm::mat4 trans;
 	trans = glm::translate(trans, glm::vec3((float)x, (float)y, 0.0));
