@@ -4,8 +4,10 @@
 #include "ZombieHolder.h"
 #include "MothershipHolder.h"
 #include "LineTripperHolder.h"
+#include "CarrierHolder.h"
+#include "MissileHolder.h"
 #include "Spawner.h"
-//#include "TextDisplay.h"
+#include "TextDisplay.h"
 
 using namespace std;
  glm::mat4 view;
@@ -58,6 +60,7 @@ int main()
 	view = glm::scale(view, glm::vec3(2.0 / width, -2.0 / height, 1.0));
 
 	Spawner* spawnController = new Spawner();
+	TextDisplay* text = new TextDisplay();
 
 	auto maxtime = chrono::milliseconds(1000 / 60);
 	holderArray[PLAYER] = new PlayerHolder();
@@ -93,7 +96,7 @@ int main()
 		for (int i = 0; i < numTypes; i++){
 			holderArray[i]->drawAll();
 		}
-
+		text->drawNumber(50,50,score);
 		glfwSwapBuffers(window);
 
 		//cout <<score <<"    |"<< (maxtime - time_span).count() << endl;
@@ -119,6 +122,7 @@ int main()
 			holderArray[i]->drawAll();
 		}
 
+		text->drawNumber(50, 50, score);
 		glfwSwapBuffers(window);
 		auto time_span = chrono::steady_clock::now() - t1;
 		this_thread::sleep_for(maxtime - time_span);

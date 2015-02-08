@@ -29,7 +29,7 @@ extern unsigned long score;
 
 const int numTypes = 7;
 extern GenericHolder* holderArray[numTypes];
-const int PLAYER = 0, FOLLOWER = 1, ZOMBIE = 2, MOTHERSHIP = 3, LINETRIPPER = 4, CARRIER = 5, Missile = 6;
+const int PLAYER = 0, FOLLOWER = 1, ZOMBIE = 2, MOTHERSHIP = 3, LINETRIPPER = 4, CARRIER = 5, MISSILE = 6;
 
 const int width = 1024;
 const int height = 768;

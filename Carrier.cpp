@@ -51,7 +51,7 @@ void Carrier::update()
         double x_to_player = (player->x) - x;
         double angle_to_player = atan2(y_to_player, x_to_player);
 
-        ((MissileHolder*)(holderArray[Missile]))->AddMissile(x, y, angle_to_player);
+        ((MissileHolder*)(holderArray[MISSILE]))->AddMissile(x, y, angle_to_player);
     }
 
 

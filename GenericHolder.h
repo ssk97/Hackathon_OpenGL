@@ -14,8 +14,6 @@ public:
 	virtual GLuint setupVertexShader();
 	virtual GLuint setupFragmentShader();
 	virtual GLuint setupGeometry();
-	//virtual void loadDraw() = 0;
-	//virtual void unloadDraw() = 0;
 	std::vector<GenericObject *> objs;
 	GLuint shaderProgram, vertexShader, fragmentShader, posAttrib, uniTrans, vbo, vao;
 };
