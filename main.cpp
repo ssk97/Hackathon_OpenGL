@@ -100,7 +100,7 @@ int main()
 		text->drawNumber(52, 52, score);
 		glfwSwapBuffers(window);
 
-		if (!gameOver && spawnController->mode != NO_MODE){
+		if (!gameOver && spawnController->mode != Spawner::NO_MODE){
 			score++;
 		}
 		auto time_span = chrono::steady_clock::now() - t1;
