@@ -93,15 +93,20 @@ void Spawner::wave_CTRush()
 {
 	for (int i = 0; i < wave; i++)
 	{
-		((LineTripperHolder*)(holderArray[LINETRIPPER]))->AddLineTripper();
+		((MothershipHolder*)(holderArray[MOTHERSHIP]))->addMothership();
 		((CarrierHolder*)(holderArray[CARRIER]))->AddCarrier();
 	}
 }
 
 void Spawner::wave_zombie()
 {
-    for (int i = 0; i < wave * 5; i++)
+    for (int i = 0; i < wave * 3; i++)
     {
         ((ZombieHolder*)(holderArray[ZOMBIE]))->AddZombie();
+        if (rand() % 10 == 0)
+        {
+            ((LineTripperHolder*)(holderArray[LINETRIPPER]))->AddLineTripper();
+            i--;
+        }
     }
 }
