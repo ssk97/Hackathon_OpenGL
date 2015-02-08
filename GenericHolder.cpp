@@ -90,8 +90,10 @@ GLuint GenericHolder::setupFragmentShader(){
 
 void GenericHolder::updateAll()
 {
-	for (std::vector<GenericObject*>::iterator it = objs.begin(); it != objs.end(); ++it)
-		(*it) -> update();
+	for (std::vector<GenericObject*>::iterator it = objs.begin(); it != objs.end(); ++it){
+		(*it)->updateOldPos();
+		(*it)->update();
+	}
 }
 #include <glm/gtx/matrix_interpolation.hpp>
 void GenericHolder::drawAll()
@@ -108,14 +110,14 @@ void GenericHolder::drawAll()
 		else
 		{
 			double reps = (itObj->distMoved()) + 1;
-			auto newTrans = (itObj)->transform();
-			auto oldTrans = (itObj)->transformOld();
+			auto rotation = (itObj)->rotation();
+			auto newTrans = ((itObj)->translate())*rotation;
+			auto oldTrans = ((itObj)->translateOld())*rotation;
 			for (int i = 0; i <= reps; i++){
 				GLint uniTrans = glGetUniformLocation(shaderProgram, "trans");
 				glUniformMatrix4fv(uniTrans, 1, GL_FALSE, glm::value_ptr(glm::interpolate(oldTrans, newTrans, i / (float)reps)));
 				draw(itObj);
 			}
-			(itObj)->updateOldPos();
 			++it;
 		}
 	}

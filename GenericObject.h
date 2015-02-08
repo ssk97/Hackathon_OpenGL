@@ -14,6 +14,7 @@ public:
 	virtual void update() = 0;
 	void updateOldPos();
 	double distMoved();
-	glm::mat4 transformOld();
-	glm::mat4 transform();
+	glm::mat4 translateOld();
+	glm::mat4 translate();
+	glm::mat4 rotation();
 };
