@@ -69,7 +69,7 @@ void Enemy::possibleCollideWithFollower()
 { 
 
 	GenericObject* follower = TheFollower;
-	if (checkCollisionLineCircle(follower->oldx, follower->oldy, follower->x, follower->y,x,y,size+15)){
+	if (checkCollisionLineCircle(follower->oldx, follower->oldy, follower->x, follower->y,x,y,size+25)){
 		markedForDeath = true;
 	}
 }
