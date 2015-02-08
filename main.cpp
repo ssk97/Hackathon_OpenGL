@@ -43,7 +43,7 @@ GLFWwindow* setupDrawing(){
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-	GLFWwindow* window = glfwCreateWindow(width, height, "OpenGL", NULL, NULL); // Fullscreen
+	GLFWwindow* window = glfwCreateWindow(width, height, "Tale of Two Circles", NULL, NULL); // Fullscreen
 	glfwMakeContextCurrent(window);
 	glewExperimental = GL_TRUE;
 	glewInit();
