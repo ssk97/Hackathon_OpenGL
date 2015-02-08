@@ -3,6 +3,7 @@
 #include "ZombieHolder.h"
 #include "MothershipHolder.h"
 #include "LineTripperHolder.h"
+#include "CarrierHolder.h"
 
 class Spawner
 {

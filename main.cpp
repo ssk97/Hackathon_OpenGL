@@ -65,6 +65,8 @@ int main()
 	holderArray[ZOMBIE] = new ZombieHolder();
 	holderArray[MOTHERSHIP] = new MothershipHolder();
 	holderArray[LINETRIPPER] = new LineTripperHolder();
+	holderArray[CARRIER] = new CarrierHolder();
+	holderArray[MISSILE] = new MissileHolder();
 
 	for (int i = 0; i < numTypes; i++){
 		holderArray[i]->setupDrawing();

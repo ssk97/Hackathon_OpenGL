@@ -27,9 +27,9 @@ glm::mat4 GenericObject::rotation()
 }
 glm::mat4 GenericObject::translateOld()//t = motion blur: 0 = old frame, 1 = this frame
 {
-	/*glm::mat4 trans;
+	glm::mat4 trans;
 	trans = glm::translate(trans, glm::vec3((float)(oldx), (float)(oldy), 0.0));
-	return trans;*/
+	return trans;
 }
 glm::mat4 GenericObject::translate()//t = motion blur: 0 = old frame, 1 = this frame
 {
