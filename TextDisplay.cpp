@@ -1,16 +1,21 @@
 #include "TextDisplay.h"
+#include "lodepng.h"
 
 TextDisplay::TextDisplay()
 {
-    int channels;
-	unsigned char* img = SOIL_load_image("Numbers_mono.png", &img_width, &img_height, &channels, 0);
+    std::vector<unsigned char> raw_image;
+    unsigned img_width = 107, img_height = 17;
+    unsigned error = lodepng::decode(raw_image, img_width, img_height, "./Numbers_mono.png");
+    if(error != 0)
+    {
+        std::cout << "error " << error << ": " << lodepng_error_text(error) << std::endl;
+    }
+
 	GLuint texture_id;
 	glGenTextures(1, &texture_id);
 	glBindTexture(GL_TEXTURE_2D, texture_id);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, img_width, img_height, 0, GL_RGB, GL_UNSIGNED_BYTE, img);
-
-	SOIL_free_image_data(img);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, img_width, img_height, 0, GL_RGB, GL_UNSIGNED_BYTE, &raw_image[0]);
 
 
 	const char* vertexSource =
