@@ -13,5 +13,10 @@ public:
 	void tick();
 	int wave = 0;
 	unsigned long long time = 0;
+	enum Mode {Normal, CTRush};
+    Mode mode = Normal;
+private:
+    void wave_normal();
+    void wave_CTRush();
 };
 
