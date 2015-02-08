@@ -173,19 +173,12 @@ glm::mat4 TextDisplay::initDraw(){
 	return scaler;
 }
 void TextDisplay::endDraw(){
-	glDisableClientState(GL_COLOR_ARRAY);
+	//glDisableClientState(GL_COLOR_ARRAY);
 }
 //	~TextDisplay();
 void TextDisplay::drawNumber(double x, double y, int num)
 {
-	//glm::mat4 scaler = initDraw();
-	glUseProgram(shaderProgram);
-	glBindVertexArray(vao);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glm::mat4 scaler;
-	scaler = glm::scale(scaler, glm::vec3((float)textWidth / 2, (float)-textHeight, 0.0));
-	GLint uniTrans = glGetUniformLocation(shaderProgram, "trans");
-	glUseProgram(shaderProgram);
+	glm::mat4 scaler = initDraw();
 	int place = 0;
 	//std::cout << std::endl;
 	int maxdigit;
