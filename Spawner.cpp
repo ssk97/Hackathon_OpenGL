@@ -20,6 +20,7 @@ void Spawner::tick()
             ((CarrierHolder*)(holderArray[CARRIER]))->AddCarrier();
         }/*
 		int remainingCount = wave;
+
 		if (wave >= 3){
 			int motherShipCount = (rand() % (remainingCount / 2));
 			for (int i = 0; i < motherShipCount; i++)
