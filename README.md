@@ -32,14 +32,19 @@ See CMakeLists.txt for the version number.
 Build Commands
 ---
 
-These commands should start in the root directory of the project.
+There is a build script in (creatively) script/build.sh that you
+can run to build the project. You should be in the project root,
+so ```$ sh script/build.sh``` should do the trick.
+
+Alternatively, you can run the following commands from the project
+root, which is what the build script does for you anyway.
 
 ```
-$ mkdir build
+$ mkdir -p build
 $ cd build
 $ cmake ..
 $ make
 ```
 
 If everything goes smoothly, you will have an executable called ```tale_of_two_circles```
-in ```build```
+in ```build```.
