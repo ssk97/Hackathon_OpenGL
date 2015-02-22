@@ -22,7 +22,7 @@ double GenericObject::distMoved(){
 glm::mat4 GenericObject::rotation()
 {
 	glm::mat4 trans;
-	trans = glm::rotate(trans, (float)angle, glm::vec3(0.0, 0.0, 1.0));
+	trans = glm::rotate(trans, (float) (angle * (PI/180)), glm::vec3(0.0, 0.0, 1.0));
 	return trans;
 }
 glm::mat4 GenericObject::translateOld()//t = motion blur: 0 = old frame, 1 = this frame
